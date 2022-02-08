@@ -1,0 +1,34 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.goods {
+  margin-left: getRem(20);
+  width: getRem(158);
+  height: getRem(165);
+  img {
+    width: inherit;
+    height: getRem(100);
+  }
+  h4 {
+    margin-top: getRem(5);
+    font-size: getRem(16);
+    line-height: getRem(16);
+  }
+  &-price {
+    font-size: getRem(18);
+    color: #3c9806;
+    display: flex;
+    justify-content: space-between;
+    &-old {
+      color: rgb(156, 156, 156);
+      text-decoration: line-through;
+    }
+  }
+  &-cart {
+    position: absolute;
+    margin-left: getRem(-30);
+    color: white;
+  }
+}

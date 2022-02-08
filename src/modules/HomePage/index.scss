@@ -1,0 +1,92 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.item-1 {
+  background-image: url("../../assets/images/plodovi.png");
+}
+
+.item-2 {
+  background-image: url("../../assets/images/decorativni.png");
+}
+
+.item-3 {
+  background-image: url("../../assets/images/yagidni.png");
+}
+
+.item-4 {
+  background-image: url("../../assets/images/exotic.png");
+}
+
+.item-5 {
+  background-image: url("../../assets/images/potato.png");
+}
+
+.item-6 {
+  background-image: url("../../assets/images/cherry.png");
+}
+
+.home {
+  padding-bottom: getRem(50);
+  &-categories {
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      background-repeat: round;
+      border-radius: getRem(16);
+      margin-top: getRem(20);
+      margin-left: getRem(20);
+      width: getRem(161);
+      height: getRem(161);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        color: white;
+        font-size: getRem(20);
+        font-weight: 500;
+      }
+    }
+  }
+  &-fertilizers {
+    width: getRem(335);
+    height: getRem(162);
+    border-radius: getRem(16);
+    margin: getRem(20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/images/fertilizers.png");
+    color: white;
+    font-size: getRem(20);
+    font-weight: 500;
+  }
+  &-popular {
+    font-weight: 500;
+    font-size: getRem(20);
+    margin-left: getRem(20);
+    margin-bottom: getRem(20);
+  }
+  &-popular-goods {
+    &-items {
+      display: flex;
+    }
+    &-more {
+      margin-top: getRem(20);
+      margin-left: getRem(130);
+    }
+  }
+  &-newsorts {
+    background-image: url("../../assets/images/newgoods.png");
+    width: getRem(335);
+    height: getRem(102);
+    margin: getRem(20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: getRem(20);
+    font-weight: 700;
+  }
+}

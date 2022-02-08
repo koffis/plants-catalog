@@ -1,0 +1,73 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.header {
+  background: rgba(0, 0, 0, 0.75);
+  a {
+    color: rgba(0, 0, 0, 0.85);
+  }
+  &-menu {
+    height: 100vmax;
+    background-color: white;
+    width: getRem(309);
+    &-info {
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: getRem(17) getRem(20);
+      background-color: #078943;
+      &-phone {
+        font-size: getRem(16);
+        margin-left: getRem(15);
+      }
+    }
+    &-main {
+      font-size: getRem(20);
+      border-bottom: getRem(1) solid #c4c4c4;
+      &-item {
+        display: flex;
+        align-items: center;
+        padding: getRem(15) getRem(20);
+        &:hover {
+          background-color: #07894449;
+        }
+        &-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: getRem(47);
+          height: getRem(47);
+          border-radius: 50%;
+          background-color: rgba(196, 196, 196, 0.3);
+          margin-right: getRem(15);
+        }
+      }
+    }
+    &-items {
+      font-size: getRem(20);
+      & p {
+        margin: 0;
+        padding: getRem(15) 0;
+        padding-left: getRem(20);
+        &:hover {
+          background-color: #07894449;
+        }
+      }
+    }
+  }
+}
+
+.header-closed {
+  display: flex;
+  justify-content: space-between;
+  padding: getRem(15) getRem(10);
+  align-items: center;
+  background: #078943;
+  &-search {
+    width: getRem(265);
+    height: getRem(30);
+    padding: 0 getRem(10);
+  }
+}
