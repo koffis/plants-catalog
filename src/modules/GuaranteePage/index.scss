@@ -1,0 +1,25 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.guarantee {
+  h4 {
+    margin-top: getRem(30);
+    margin-left: getRem(20);
+    font-weight: 700;
+    font-size: getRem(20);
+  }
+  &-item {
+    display: flex;
+    &-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: getRem(107);
+    }
+    p {
+      width: getRem(264);
+    }
+  }
+}

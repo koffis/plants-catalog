@@ -1,0 +1,37 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.contacts {
+  margin-left: getRem(20);
+  margin-bottom: getRem(30);
+  p {
+    margin-bottom: getRem(10);
+  }
+  h3 {
+    font-weight: 500;
+    font-size: getRem(20);
+    margin-top: getRem(20);
+    margin-bottom: getRem(20);
+  }
+  &-schedule {
+    font-size: getRem(18);
+  }
+  &-work {
+    font-weight: 300;
+    font-size: getRem(18);
+  }
+  &-weekend {
+    font-weight: 300;
+    font-size: getRem(18);
+  }
+  &-number {
+    font-weight: 500;
+    font-size: getRem(18);
+    color: #078943;
+  }
+  &-address {
+    font-size: getRem(20);
+  }
+}

@@ -61,6 +61,7 @@
     color: white;
     font-size: getRem(20);
     font-weight: 500;
+    background-repeat: round;
   }
   &-popular {
     font-weight: 500;
@@ -79,6 +80,7 @@
   }
   &-newsorts {
     background-image: url("../../assets/images/newgoods.png");
+    background-repeat: round;
     width: getRem(335);
     height: getRem(102);
     margin: getRem(20);

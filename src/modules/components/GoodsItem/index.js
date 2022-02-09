@@ -8,11 +8,17 @@ const GoodsItem = ({
   name = "Lorem ipsum lorem ipsum",
   price = "1560$",
   discount,
+  cart = true,
 }) => {
   return (
     <div className="goods">
       <img src={image} alt="goods" />
-      <ShoppingCartOutlined className="goods-cart" style={{ fontSize: 30 }} />
+      {cart && (
+        <ShoppingCartOutlined
+          className="goods-cart"
+          style={{ fontSize: 30, color: "white" }}
+        />
+      )}
       <h4>{name}</h4>
       <span className="goods-price">
         <span className="goods-price-new">{price}</span>

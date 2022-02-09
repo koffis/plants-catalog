@@ -49,11 +49,18 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-menu-items">
+          <Link to="/">
+            <p>Головна</p>
+          </Link>
           <p>Про магазин</p>
           <p>Доставка і оплата</p>
-          <p>Гарантії</p>
+          <Link to="/guarantee">
+            <p>Гарантії</p>
+          </Link>
           <p>Відгуки клієнтів</p>
-          <p>Контакти</p>
+          <Link to="/contacts">
+            <p>Контакти</p>
+          </Link>
         </div>
       </div>
     </div>
@@ -71,7 +78,9 @@ const Header = () => {
         onSearch={onSearch}
         enterButton
       />
-      <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+      <Link to="/cart">
+        <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+      </Link>
     </div>
   );
 };

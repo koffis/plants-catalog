@@ -2,3 +2,14 @@
   $remSize: $size / 16;
   @return #{$remSize}rem;
 }
+
+.cart {
+  &-current {
+    font-weight: 500;
+    font-size: getRem(20);
+    margin: getRem(20);
+  }
+  &-goods {
+    display: flex;
+  }
+}
