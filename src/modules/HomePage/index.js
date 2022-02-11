@@ -1,7 +1,5 @@
-import { DownOutlined } from "@ant-design/icons";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
-import GoodsItem from "../components/GoodsItem";
 
 import "./index.scss";
 
