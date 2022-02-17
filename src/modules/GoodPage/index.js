@@ -14,11 +14,8 @@ import ImageGallery from "react-image-gallery";
 import GoodsItem from "../components/GoodsItem";
 import Header from "../components/Header";
 
+import { getRem } from "../../utils";
 import "./index.scss";
-
-const getRem = (size) => {
-  return `${size / 16}rem`;
-};
 
 const images = [
   {

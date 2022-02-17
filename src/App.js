@@ -4,13 +4,14 @@ import { ROUTES } from "./config";
 import HomePage from "./modules/HomePage";
 import GoodPage from "./modules/GoodPage";
 import CartPage from "./modules/CartPage";
+import AboutPage from "./modules/AboutPage";
 import ContactsPage from "./modules/ContactsPage";
 import GuaranteePage from "./modules/GuaranteePage";
-
-import "antd/dist/antd.css";
 import "./index.scss";
 
-const { root, cart, contacts, guarantee, goods } = ROUTES;
+import "antd/dist/antd.css";
+
+const { root, cart, contacts, guarantee, goods, about } = ROUTES;
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route exact path={cart} component={CartPage} />
       <Route exact path={contacts} component={ContactsPage} />
       <Route exact path={goods} component={GoodPage} />
+      <Route exact path={about} component={AboutPage} />
       <Route exact path={guarantee} component={GuaranteePage} />
     </Switch>
   );

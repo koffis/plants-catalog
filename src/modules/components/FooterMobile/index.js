@@ -17,7 +17,7 @@ const FooterMobile = () => {
         </div>
       </div>
       <div className="home-newsorts">Нові сорти</div>
-      <h3 className="home-popular">Рекомендовані</h3>
+      <h3 className="home-popular">Сезонний вибір</h3>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
           <GoodsItem />
@@ -27,7 +27,7 @@ const FooterMobile = () => {
           Показати ще <DownOutlined />
         </div>
       </div>
-      <h3 className="home-popular">Знижки</h3>
+      <h3 className="home-popular">Акції</h3>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
           <GoodsItem discount="1560" />

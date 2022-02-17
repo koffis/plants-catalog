@@ -1,7 +1,4 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
-}
+@import "../../index.scss";
 
 .item-1 {
   background-image: url("../../assets/images/plodovi.png");
@@ -28,10 +25,14 @@
 }
 
 .home {
-  padding-bottom: getRem(50);
   &-categories {
     display: flex;
     flex-wrap: wrap;
+    @include breakpoint(mobile_landscape) {
+      margin-top: getRem(10);
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
     &-item {
       background-repeat: round;
       border-radius: getRem(16);
@@ -46,6 +47,26 @@
         color: white;
         font-size: getRem(20);
         font-weight: 500;
+      }
+      @include breakpoint(mobile_landscape) {
+        width: unset;
+        height: unset;
+        background-image: unset;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+        span {
+          font-size: getRem(18);
+          line-height: getRem(18);
+          padding: getRem(20) getRem(13);
+          color: black;
+        }
+        &:hover {
+          background: rgba(7, 137, 67, 1);
+          span {
+            color: white;
+          }
+        }
       }
     }
   }
@@ -90,5 +111,8 @@
     color: white;
     font-size: getRem(20);
     font-weight: 700;
+    @include breakpoint(mobile_landscape) {
+      display: none;
+    }
   }
 }

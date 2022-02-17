@@ -1,9 +1,14 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
+import { useWindow } from "../../utils";
+import MainBlock from "../components/MainBlock";
 
 import "./index.scss";
 
 const HomePage = () => {
+  const { header } = useWindow();
+
   return (
     <div>
       <Header />
@@ -27,9 +32,15 @@ const HomePage = () => {
           <div className="home-categories-item item-6">
             <span>Колоноподібні</span>
           </div>
+          {header ? (
+            <div className="home-categories-item item-6">
+              <span>Добрива</span>
+            </div>
+          ) : null}
         </div>
-        <div className="home-fertilizers">Добрива</div>
-        <FooterMobile />
+        {header ? null : <div className="home-fertilizers">Добрива</div>}
+        {header && <MainBlock />}
+        {header ? <Footer /> : <FooterMobile />}
       </div>
     </div>
   );

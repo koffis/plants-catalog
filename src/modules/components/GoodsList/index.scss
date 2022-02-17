@@ -1,0 +1,16 @@
+@import "../../../index.scss";
+
+.goods-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-title {
+    font-size: getRem(36);
+    margin: getRem(30) 0 getRem(15);
+  }
+  &-block {
+    width: getRem(1200);
+    justify-content: space-between;
+    display: flex;
+  }
+}

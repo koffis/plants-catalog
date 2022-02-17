@@ -13,4 +13,5 @@ export const ROUTES = {
   contacts: "/contacts",
   guarantees: "/guarantee",
   goods: "/goods",
+  about: "/about",
 };

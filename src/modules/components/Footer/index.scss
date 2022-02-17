@@ -1,0 +1,78 @@
+@import "../../../index.scss";
+
+.footer {
+  background-color: rgba(7, 137, 67, 1);
+  display: flex;
+  padding-left: getRem(147);
+  margin-top: getRem(30);
+  &-logo {
+    margin-top: getRem(31);
+  }
+  &-info {
+    display: flex;
+    padding-top: getRem(35);
+    margin-left: getRem(71);
+    &-icon {
+      font-size: getRem(35);
+      margin-right: getRem(30);
+    }
+    &-contacts {
+      color: white;
+      p {
+        font-size: getRem(18);
+        font-weight: 300;
+        margin-bottom: getRem(15);
+      }
+      h4 {
+        color: white;
+        font-weight: normal;
+        font-size: getRem(18);
+      }
+    }
+  }
+  &-map {
+    display: flex;
+    padding-top: getRem(35);
+    margin-left: getRem(70);
+    color: white;
+    &-icon {
+      font-size: getRem(35);
+      margin-right: getRem(16);
+    }
+    p {
+      font-size: getRem(18);
+      font-weight: 500;
+    }
+  }
+  &-links {
+    display: flex;
+    flex-direction: column;
+    padding-top: getRem(35);
+    margin-left: getRem(120);
+    a {
+      color: white;
+      line-height: getRem(16);
+      font-size: getRem(16);
+      margin-bottom: getRem(15);
+    }
+  }
+  &-other {
+    display: flex;
+    flex-direction: column;
+    padding-top: getRem(35);
+    margin-left: getRem(60);
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      font-size: getRem(35);
+      width: getRem(90);
+    }
+    a {
+      color: white;
+      line-height: getRem(16);
+      font-size: getRem(16);
+      margin-bottom: getRem(15);
+    }
+  }
+}

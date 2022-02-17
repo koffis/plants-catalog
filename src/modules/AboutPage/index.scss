@@ -1,0 +1,17 @@
+@function getRem($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+.about {
+  h2 {
+    font-size: getRem(20);
+    margin: getRem(20) getRem(20);
+    font-weight: 600;
+  }
+  p {
+    font-size: getRem(16);
+    margin: 0 getRem(20) getRem(20);
+    text-align: justify;
+  }
+}
