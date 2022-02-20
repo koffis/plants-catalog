@@ -1,25 +1,55 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
-}
+@import "../../index.scss";
 
 .guarantee {
+  @include breakpoint(mobile_landscape) {
+    .guarantee-list {
+      display: flex;
+      justify-content: space-between;
+      margin-left: getRem(256);
+      margin-right: getRem(256);
+    }
+  }
   h4 {
     margin-top: getRem(30);
     margin-left: getRem(20);
     font-weight: 700;
     font-size: getRem(20);
+    @include breakpoint(mobile_landscape) {
+      margin-bottom: getRem(60);
+      font-size: getRem(36);
+      text-align: center;
+    }
   }
   &-item {
     display: flex;
+    @include breakpoint(mobile_landscape) {
+      flex-direction: column;
+    }
     &-image {
       display: flex;
       justify-content: center;
       align-items: center;
       width: getRem(107);
+      @include breakpoint(mobile_landscape) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: getRem(2) solid rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        width: getRem(144);
+        height: getRem(144);
+        margin-bottom: getRem(15);
+        img {
+          width: getRem(80);
+        }
+      }
     }
     p {
       width: getRem(264);
+      @include breakpoint(mobile_landscape) {
+        text-align: center;
+        width: getRem(144);
+      }
     }
   }
 }

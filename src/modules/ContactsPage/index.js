@@ -1,8 +1,13 @@
 import "./index.scss";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
+import { useWindow } from "../../utils";
+import Footer from "../components/Footer";
+import MainBlock from "../components/MainBlock";
 
 const ContactsPage = () => {
+  const { header } = useWindow();
+
   return (
     <div>
       <Header />
@@ -13,9 +18,10 @@ const ContactsPage = () => {
         <p className="contacts-weekend">Нд - вихідний</p>
         <p className="contacts-number">+38 (067) 60 360 52</p>
         <p className="contacts-number">+38 (067) 60 360 52</p>
-        <span className="contacts-address">м.Тернопіль вул, Джерельна, 35</span>
+        <p className="contacts-address">м.Тернопіль вул, Джерельна, 35</p>
       </div>
-      <FooterMobile />
+      {header && <MainBlock />}
+      {header ? <Footer /> : <FooterMobile />}
     </div>
   );
 };

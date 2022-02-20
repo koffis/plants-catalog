@@ -1,17 +1,24 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
-}
+@import "../../index.scss";
 
 .about {
   h2 {
     font-size: getRem(20);
     margin: getRem(20) getRem(20);
     font-weight: 600;
+    @include breakpoint(mobile_landscape) {
+      text-align: center;
+      font-weight: 600;
+      margin-top: getRem(55);
+      font-size: getRem(36);
+    }
   }
   p {
     font-size: getRem(16);
     margin: 0 getRem(20) getRem(20);
     text-align: justify;
+    @include breakpoint(mobile_landscape) {
+      margin-left: getRem(147);
+      margin-right: getRem(147);
+    }
   }
 }

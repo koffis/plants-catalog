@@ -1,6 +1,61 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
+@import "../../index.scss";
+
+.goodPage-desktop {
+  &-description {
+    h4 {
+      font-size: getRem(36);
+      margin-left: getRem(147);
+      margin-bottom: 31;
+    }
+    p {
+      margin-left: getRem(147);
+      margin-right: getRem(539);
+      font-size: getRem(18);
+    }
+  }
+  h3 {
+    font-size: getRem(48);
+    font-weight: 600;
+    margin-left: getRem(147);
+    margin-top: getRem(38);
+    margin-bottom: 0;
+  }
+  &-main {
+    display: flex;
+    margin: getRem(60) getRem(147);
+    &-info {
+      &-item {
+        display: flex;
+        &-image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: getRem(107);
+        }
+        p {
+          width: getRem(264);
+        }
+      }
+      margin-left: getRem(30);
+      button {
+        background: #078943;
+        color: white;
+        font-size: getRem(18);
+        margin-left: getRem(30);
+        border: 0;
+        padding: getRem(10) getRem(53);
+        margin-bottom: getRem(30);
+      }
+      hr {
+        margin-bottom: getRem(30);
+      }
+      h4 {
+        font-size: getRem(48);
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .goodPage {

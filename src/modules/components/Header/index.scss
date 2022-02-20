@@ -3,9 +3,17 @@
   @return #{$remSize}rem;
 }
 
+.opacity {
+  background-color: rgba(7, 137, 67, 0.7);
+}
+
 .header-desktop {
   background-color: rgb(7, 137, 67);
   &-menu {
+    z-index: 2;
+    width: 100%;
+    background-color: rgb(7, 137, 67);
+    position: fixed;
     display: flex;
     justify-content: space-between;
     padding: getRem(32) getRem(147);
@@ -21,6 +29,7 @@
   &-more {
     display: flex;
     align-items: center;
+    padding-top: getRem(90);
     margin-left: getRem(144);
     padding-bottom: getRem(30);
     img {

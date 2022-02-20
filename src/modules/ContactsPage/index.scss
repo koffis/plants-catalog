@@ -1,37 +1,57 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
-}
+@import "../../index.scss";
 
 .contacts {
   margin-left: getRem(20);
   margin-bottom: getRem(30);
   p {
     margin-bottom: getRem(10);
+    @include breakpoint(mobile_landscape) {
+      text-align: center;
+    }
   }
   h3 {
     font-weight: 500;
     font-size: getRem(20);
     margin-top: getRem(20);
     margin-bottom: getRem(20);
+    @include breakpoint(mobile_landscape) {
+      margin-bottom: getRem(60);
+      font-size: getRem(36);
+      text-align: center;
+    }
   }
   &-schedule {
     font-size: getRem(18);
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(24);
+    }
   }
   &-work {
     font-weight: 300;
     font-size: getRem(18);
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(20);
+    }
   }
   &-weekend {
     font-weight: 300;
     font-size: getRem(18);
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(20);
+    }
   }
   &-number {
     font-weight: 500;
     font-size: getRem(18);
     color: #078943;
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(20);
+    }
   }
   &-address {
     font-size: getRem(20);
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(22);
+    }
   }
 }

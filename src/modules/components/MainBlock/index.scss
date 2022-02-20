@@ -1,1 +1,39 @@
 @import "../../../index.scss";
+
+.main-block-list-item-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    margin-top: getRem(15);
+    font-size: getRem(18);
+  }
+}
+
+.main-block {
+  &-betters {
+    h4 {
+      font-weight: 600;
+      margin-top: getRem(55);
+      font-size: getRem(36);
+      text-align: center;
+    }
+    &-list {
+      display: flex;
+      justify-content: space-between;
+      margin: getRem(44) getRem(258);
+      &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: getRem(2) solid rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        width: getRem(144);
+        img {
+          width: getRem(80);
+          margin: getRem(32);
+        }
+      }
+    }
+  }
+}

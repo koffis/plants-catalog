@@ -1,6 +1,7 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import goods from "../../../assets/images/fertilizers.png";
 import { useWindow, getRem } from "../../../utils";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import "./index.scss";
@@ -43,7 +44,11 @@ const GoodsItem = ({
       <span className="goods-price">
         <span className="goods-price-new">{price}</span>
         {discount && <span className="goods-price-old">{discount}</span>}
-        {header && <GreenButton>Купити</GreenButton>}
+        {header && (
+          <Link to="/goods">
+            <GreenButton>Купити</GreenButton>
+          </Link>
+        )}
       </span>
     </div>
   );

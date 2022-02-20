@@ -34,6 +34,7 @@
       flex-wrap: nowrap;
     }
     &-item {
+      cursor: pointer;
       background-repeat: round;
       border-radius: getRem(16);
       margin-top: getRem(20);

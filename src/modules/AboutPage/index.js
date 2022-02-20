@@ -1,8 +1,12 @@
 import Header from "../components/Header";
 import FooterMobile from "./../components/FooterMobile/index";
+import Footer from "../components/Footer";
+import MainBlock from "../components/MainBlock";
+import { useWindow } from "../../utils";
 import "./index.scss";
 
 const AboutPage = () => {
+  const { header } = useWindow();
   return (
     <div>
       <Header />
@@ -45,7 +49,8 @@ const AboutPage = () => {
           laborum.
         </p>
       </div>
-      <FooterMobile />
+      {header && <MainBlock />}
+      {header ? <Footer /> : <FooterMobile />}
     </div>
   );
 };

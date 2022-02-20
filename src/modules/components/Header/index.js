@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   PhoneFilled,
@@ -34,12 +34,12 @@ const Header = () => {
     <div className="header-desktop">
       <div className="header-desktop-menu">
         <span className="header-desktop-menu-left">
-          <Link to="/about">Про магазин</Link>
-          <Link to="/">Доставка і оплата</Link>
           <Link to="/">Каталог</Link>
-          <Link to="/guarantee">Гарантії</Link>
-          <Link to="/">Відгуки клієнтів</Link>
+          <Link to="/">Доставка і оплата</Link>
           <Link to="contacts">Контакти</Link>
+          <Link to="/guarantee">Гарантії</Link>
+          <Link to="/about">Про магазин</Link>
+          <Link to="/">Відгуки клієнтів</Link>
         </span>
         <span className="header-desktop-menu-right">
           <Link to="/cart">
@@ -48,7 +48,9 @@ const Header = () => {
         </span>
       </div>
       <div className="header-desktop-more">
-        <img src={logo} alt="tree" />
+        <Link to="/">
+          <img src={logo} alt="tree" />
+        </Link>
         <SearchCustom placeholder="Пошук..." onSearch={onSearch} enterButton />
         <Button ghost>Акції</Button>
       </div>
