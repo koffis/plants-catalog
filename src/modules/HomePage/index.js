@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
@@ -20,9 +21,9 @@ const HomePage = () => {
       <Header />
       <div className="home">
         <div className="home-categories">
-          <div className="home-categories-item item-1">
+          <Link to='/shop' className="home-categories-item item-1">
             <span>Плодові</span>
-          </div>
+          </Link>
           <div className="home-categories-item item-2">
             <span>Декоративні</span>
           </div>

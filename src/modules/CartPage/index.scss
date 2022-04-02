@@ -1,9 +1,16 @@
-@function getRem($size) {
-  $remSize: $size / 16;
-  @return #{$remSize}rem;
-}
+@import '../../index.scss';
 
 .cart {
+  &-sum {
+    font-size: getRem(18);
+    margin-left: getRem(20);
+    margin-top: getRem(20);
+  }
+  h5 {
+    font-size: getRem(20);
+    margin-left: getRem(20);
+    margin-top: getRem(20);
+  }
   &-current {
     font-weight: 500;
     font-size: getRem(20);
@@ -11,5 +18,46 @@
   }
   &-goods {
     display: flex;
+  }
+  &-delivery {
+    margin-left: getRem(20);
+    h4 {
+      font-size: getRem(16);
+      margin-bottom: getRem(20);
+    }
+    &-input {
+      width: getRem(284);
+      height: getRem(36);
+      margin-bottom: getRem(15);
+    }
+    &-poshta {
+      width: getRem(120);
+      margin-bottom: getRem(20);
+    }
+    &-radio {
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-bottom: getRem(20);
+      }
+    }
+    &-banks {
+      width: 90%;
+      margin-bottom: getRem(20);
+    }
+    &-comment {
+      width: getRem(325);
+      height: getRem(155);
+    }
+    &-button {
+      width: getRem(325);
+      height: getRem(44);
+      background: #1CCE2E;
+      border: 0;
+      color: white;
+      font-size: getRem(20);
+      margin-top: getRem(30);
+      margin-bottom: getRem(45);
+    }
   }
 }

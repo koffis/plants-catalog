@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   LeftOutlined,
   ShoppingCartOutlined,
@@ -22,21 +23,6 @@ import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
 import "./index.scss";
-
-const images = [
-  {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
 
 const RedButton = styled(Button)`
   background: #ce1c34;
@@ -63,12 +49,15 @@ const GoodPage = () => {
   let history = useHistory();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
+
+  const { images, name, price, code, description } = useSelector(state => state.goods);
+
   return (
     <div>
       <Header />
       {header ? (
         <div className="goodPage-desktop">
-          <h3>Lorem ipsum</h3>
+          <h3>{name}</h3>
           <div className="goodPage-desktop-main">
             <ImageGallery
               items={images}
@@ -79,8 +68,8 @@ const GoodPage = () => {
               slideOnThumbnailOver={true}
             />
             <div className="goodPage-desktop-main-info">
-              <h4>150 ГРН.</h4>
-              <p>Код : 10892</p>
+              <h4>{price} ГРН</h4>
+              <p>Код : {code}</p>
               <span>
                 <InputNumber min={1} value={value} onChange={setValue} />
                 <button>Купити</button>
@@ -124,36 +113,7 @@ const GoodPage = () => {
           </div>
           <div className="goodPage-desktop-description">
             <h4>Опис товару</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p>{description}</p>
           </div>
           <MainBlock isGood={true} />
           <Footer />
@@ -163,10 +123,10 @@ const GoodPage = () => {
           <span onClick={history.goBack} className="goodPage-back">
             <LeftOutlined /> Назад
           </span>
-          <h4 className="goodPage-name">Lorem ipsum</h4>
+          <h4 className="goodPage-name">{name}</h4>
           <span className="goodPage-info">
-            <span className="goodPage-info-code">Код: 1223049582</span>
-            <span className="goodPage-info-price">1560$</span>
+            <span className="goodPage-info-code">Код: {code}</span>
+            <span className="goodPage-info-price">{price} ГРН</span>
           </span>
           <div className="goodPage-goods">
             <ImageGallery
@@ -186,13 +146,7 @@ const GoodPage = () => {
             Опис товару
           </h5>
           <p className="goodPage-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            {description}
           </p>
           <hr />
           <h5 className="goodPage-delivery">

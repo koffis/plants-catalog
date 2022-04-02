@@ -9,6 +9,7 @@
     height: unset;
   }
   img {
+    object-fit: cover;
     width: inherit;
     height: getRem(100);
     @include breakpoint(mobile_landscape) {

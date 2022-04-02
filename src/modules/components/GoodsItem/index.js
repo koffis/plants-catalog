@@ -42,8 +42,8 @@ const GoodsItem = ({
         {header && <span>Код:{code}</span>}
       </div>
       <span className="goods-price">
-        <span className="goods-price-new">{price}</span>
-        {discount && <span className="goods-price-old">{discount}</span>}
+        <span className="goods-price-new">{price} ГРН</span>
+        {discount && <span className="goods-price-old">{discount} ГРН</span>}
         {header && (
           <Link to="/goods">
             <GreenButton>Купити</GreenButton>
