@@ -61,18 +61,19 @@
     flex-direction: column;
     padding-top: getRem(35);
     margin-left: getRem(60);
-    &-block {
-      display: flex;
-      justify-content: space-between;
-      color: white;
-      font-size: getRem(35);
-      width: getRem(90);
-    }
-    a {
+    &-links {
       color: white;
       line-height: getRem(16);
       font-size: getRem(16);
       margin-bottom: getRem(15);
+    }
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      &-icon {
+        color: white;
+        font-size: getRem(35);
+      }
     }
   }
 }

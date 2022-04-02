@@ -1,11 +1,16 @@
-import "./index.scss";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
 import { useWindow } from "../../utils";
 import Footer from "../components/Footer";
 import MainBlock from "../components/MainBlock";
 
+import "./index.scss";
+
 const ContactsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { header } = useWindow();
 
   return (

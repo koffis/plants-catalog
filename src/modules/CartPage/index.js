@@ -1,8 +1,13 @@
-import "./index.scss";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import GoodsItem from "./../components/GoodsItem/index";
+import Delivery from "./delivery";
+import "./index.scss";
 
 const CartPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Header />
@@ -12,6 +17,8 @@ const CartPage = () => {
           <GoodsItem cart={false} />
           <GoodsItem cart={false} />
         </div>
+        <h4>Загальна сума: {"3120$"}</h4>
+        <Delivery />
       </div>
     </div>
   );

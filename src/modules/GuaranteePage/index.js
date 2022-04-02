@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
 import car from "../../assets/images/car.svg";
@@ -10,6 +11,9 @@ import "./index.scss";
 import MainBlock from "../components/MainBlock";
 
 const GuaranteePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { header } = useWindow();
 
   return (

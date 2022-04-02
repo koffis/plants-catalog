@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../components/Header";
 import FooterMobile from "./../components/FooterMobile/index";
 import Footer from "../components/Footer";
@@ -6,6 +7,9 @@ import { useWindow } from "../../utils";
 import "./index.scss";
 
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { header } = useWindow();
   return (
     <div>

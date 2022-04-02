@@ -41,12 +41,25 @@ const Footer = () => {
         <Link to="/">Доставка і оплата</Link>
       </div>
       <div className="footer-other">
-        <Link to="/">Каталог</Link>
-        <Link to="/">Відгуки клієнтів</Link>
-        <Link to="/">Підтримка</Link>
+        <Link className="footer-other-links" to="/">
+          Каталог
+        </Link>
+        <Link className="footer-other-links" to="/">
+          Відгуки клієнтів
+        </Link>
+        <Link className="footer-other-links" to="/">
+          Підтримка
+        </Link>
         <div className="footer-other-block">
-          <FacebookOutlined className="footer-other-block-icon" />
-          <MailOutlined className="footer-other-icon" />
+          <a
+            className="footer-other-block-icon"
+            href="https://www.facebook.com/SagSimyBoyko/"
+          >
+            <FacebookOutlined />
+          </a>
+          <a href="/" className="footer-other-block-icon">
+            <MailOutlined />
+          </a>
         </div>
       </div>
     </div>

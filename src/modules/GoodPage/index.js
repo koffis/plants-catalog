@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   LeftOutlined,
   ShoppingCartOutlined,
@@ -57,6 +57,9 @@ const GreenButton = styled(Button)`
 `;
 
 const GoodPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   let history = useHistory();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
