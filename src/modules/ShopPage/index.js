@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useWindow } from "../../utils";
 import Header from "../components/Header";
+import Categories from '../HomePage/categories';
 
 const ShopPage = () => {
     const { header } = useWindow();
@@ -11,8 +12,9 @@ const ShopPage = () => {
     return (
         <>
             <Header />
+            <Categories />
             <div>
-                GAMNO
+                List of items
             </div>
         </>
     );

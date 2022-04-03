@@ -1,3 +1,3 @@
-export const GET_GOOD_REQUEST = "GET_GOOD_REQUEST";
-export const GET_GOOD_SUCCESS = "GET_GOOD_SUCCESS";
-export const GET_GOOD_FAILURE = "GET_GOOD_FAILURE";
+export const ADD_GOOD = "ADD_GOOD";
+export const DELETE_GOOD = "DELETE_GOOD";
+export const CHANGE_AMOUNT = "CHANGE_AMOUNT";

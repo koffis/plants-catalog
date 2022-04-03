@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import GoodsItem from "./../components/GoodsItem/index";
 import Delivery from "./delivery";
+import { useWindow } from "../../utils";
+import Footer from '../components/Footer';
 import "./index.scss";
 
 const CartPage = () => {
@@ -10,6 +12,7 @@ const CartPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const { header } = useWindow();
   const cart = useSelector(state => state.cart.cart);
 
   const cartList = cart.map(item => <GoodsItem
@@ -18,13 +21,15 @@ const CartPage = () => {
     name={item.name}
     price={item.price}
     code={item.code}
+    amount={item.amount}
     cart={false}
+    close={true}
   />);
 
   const getSum = () => {
     let sum = 0;
     for (let i = 0; i < cart.length; i++) {
-      sum += cart[i].price;
+      sum += (cart[i].amount * cart[i].price);
     };
     return sum;
   };
@@ -41,6 +46,7 @@ const CartPage = () => {
         <h5>Оформлення замовлення:</h5>
         <Delivery />
       </div>
+      {header && <Footer />}
     </div>
   );
 };

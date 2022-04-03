@@ -18,8 +18,18 @@
   }
   &-goods {
     display: flex;
+    flex-wrap: wrap;
+  }
+  @include breakpoint(mobile_landscape) {
+    padding-left: getRem(200);
   }
   &-delivery {
+    @include breakpoint(mobile_landscape) {
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
     margin-left: getRem(20);
     h4 {
       font-size: getRem(16);
@@ -44,6 +54,9 @@
     &-banks {
       width: 90%;
       margin-bottom: getRem(20);
+      @include breakpoint(mobile_landscape) {
+       width: getRem(400);
+      }
     }
     &-comment {
       width: getRem(325);

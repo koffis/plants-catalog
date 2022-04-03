@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   LeftOutlined,
   ShoppingCartOutlined,
@@ -22,6 +22,9 @@ import { getRem } from "../../utils";
 import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
+import { addCartItem } from "../CartPage/actions/cartActions";
+import { Alert } from 'antd';
+
 import "./index.scss";
 
 const RedButton = styled(Button)`
@@ -46,6 +49,7 @@ const GoodPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const dispatch = useDispatch();
   let history = useHistory();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
@@ -72,7 +76,13 @@ const GoodPage = () => {
               <p>Код : {code}</p>
               <span>
                 <InputNumber min={1} value={value} onChange={setValue} />
-                <button>Купити</button>
+                <button onClick={() => dispatch(addCartItem({
+                  image: images[0].original,
+                  name,
+                  code,
+                  price,
+                  amount: value
+                }))}>Купити</button>
                 <hr />
               </span>
               <div className="goodPage-desktop-main-info-item">
@@ -135,10 +145,15 @@ const GoodPage = () => {
               showPlayButton={false}
               thumbnailPosition="left"
             />
-            <RedButton type="primary">
+            <RedButton type="primary" onClick={() => dispatch(addCartItem({
+              image: images[0].original,
+              name,
+              code,
+              price
+            }))}>
               <ShoppingCartOutlined /> Додати в корзину
             </RedButton>
-            <GreenButton type="primary">Купити зараз</GreenButton>
+            {/* <GreenButton type="primary">Купити зараз</GreenButton> */}
           </div>
           <hr />
           <h5 className="goodPage-description">
