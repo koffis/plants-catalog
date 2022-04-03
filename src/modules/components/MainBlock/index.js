@@ -2,6 +2,7 @@ import verify from "../../../assets/images/verify.svg";
 import check from "../../../assets/images/check.svg";
 import packages from "../../../assets/images/packages.svg";
 import GoodsList from "../GoodsList";
+
 import "./index.scss";
 
 const goodsList = [
@@ -52,12 +53,13 @@ const goodsList = [
   },
 ];
 
-const MainBlock = ({ isGood }) => {
+const MainBlock = ({ isGood, popular, discount, season }) => {
+
   return (
     <div className="main-block">
       {isGood ? null : (
         <>
-          <GoodsList title="Популярні товари" goods={goodsList} />
+          <GoodsList title="Популярні товари" goods={popular} />
           <GoodsList title="Сезонний вибір" goods={goodsList} />
         </>
       )}

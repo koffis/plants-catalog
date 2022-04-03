@@ -8,7 +8,7 @@ const GoodsList = ({ title, goods }) => {
       name={good.name}
       code={good.code}
       price={good.price}
-      discount={good.discount}
+      discount={good.discount !== good.price && good.discount}
       cart={good.cart}
     />
   ));

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import {
   LeftOutlined,
   ShoppingCartOutlined,
@@ -24,6 +25,7 @@ import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
 import { addCartItem, increaseCount } from "../CartPage/actions/cartActions";
 import { Alert } from 'antd';
+import { receiveGoods } from "./actions/goodsActions";
 
 import "./index.scss";
 
@@ -46,16 +48,22 @@ const GreenButton = styled(Button)`
 `;
 
 const GoodPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  const dispatch = useDispatch();
   let history = useHistory();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
   const [success, setSuccess] = useState(false);
+  const { state } = useLocation();
 
-  const { images, name, price, code, description } = useSelector(state => state.goods);
+  const code = state.code;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(receiveGoods(code))
+  }, []);
+  const dispatch = useDispatch();
+
+  const { images, name, price, description } = useSelector(state => state.goods);
+  const popular = useSelector(state => state.home.popular);
 
   return (
     <div>
@@ -132,7 +140,7 @@ const GoodPage = () => {
             <h4>Опис товару</h4>
             <p>{description}</p>
           </div>
-          <MainBlock isGood={true} />
+          <MainBlock isGood={true} popular={popular} />
           <Footer />
         </div>
       ) : (

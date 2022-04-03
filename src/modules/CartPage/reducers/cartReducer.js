@@ -13,30 +13,8 @@ const replaceAmount = (state, goods) => {
 
 
 const initialState = {
-    cart: [
-        {
-            image: 'https://www.eterex.lt/wp-content/uploads/2017/02/herman.jpg',
-            name: 'Slyva',
-            code: 1337228,
-            price: 1500,
-            amount: 2
-        },
-        {
-            image: 'https://fruit-time.ua/images/cache/products/5a/yabluko__347-500x500.jpeg',
-            name: 'Yabluko',
-            code: 1332228,
-            price: 500,
-            amount: 3
-        },
-        {
-            image: 'https://myexoticfruit.com/____impro/1/webshopmedia/pomelo%20red%20flesh-1561304476719.jpg?&withoutEnlargement&resize=960,9999',
-            name: 'Zalupa',
-            code: 13318,
-            price: 200,
-            amount: 1
-        },
-    ],
-    count: 3
+    cart: [],
+    count: 0
 };
 
 const handlers = {

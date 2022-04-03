@@ -1,4 +1,4 @@
-import { getEquipment } from "../api"
+import { getGood } from "../api"
 import {
     GET_GOOD_REQUEST,
     GET_GOOD_SUCCESS,
@@ -13,10 +13,10 @@ const success = (goods) => ({
 });
 const failure = () => ({ type: GET_GOOD_FAILURE });
 
-export const receiveGoods = () => async (dispatch) => {
+export const receiveGoods = (code) => async (dispatch) => {
     dispatch(request());
     try {
-        const { data: receiveGoodsData } = await getEquipment();
+        const { data: receiveGoodsData } = await getGood(code);
 
         dispatch(success(receiveGoodsData));
     } catch (e) {
