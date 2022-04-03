@@ -1,7 +1,9 @@
 import {
     DELETE_GOOD,
     ADD_GOOD,
-    CHANGE_AMOUNT
+    CHANGE_AMOUNT,
+    INCREASE_COUNT,
+    DECREASE_COUNT
 } from "../const";
 
 const replaceAmount = (state, goods) => {
@@ -33,7 +35,8 @@ const initialState = {
             price: 200,
             amount: 1
         },
-    ]
+    ],
+    count: 3
 };
 
 const handlers = {
@@ -54,6 +57,9 @@ const handlers = {
             return element
         }),
     }),
+    [INCREASE_COUNT]: (state) => ({ ...state, count: state.count += 1 }),
+    [DECREASE_COUNT]: (state) => ({ ...state, count: state.count -= 1 }),
+
     DEFAULT: (state) => state,
 };
 

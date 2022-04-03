@@ -38,6 +38,7 @@
       }
       margin-left: getRem(30);
       button {
+        cursor: pointer;
         background: #078943;
         color: white;
         font-size: getRem(18);
@@ -45,6 +46,9 @@
         border: 0;
         padding: getRem(10) getRem(53);
         margin-bottom: getRem(30);
+        &:hover {
+          background: #0cd369;
+        }
       }
       hr {
         margin-bottom: getRem(30);

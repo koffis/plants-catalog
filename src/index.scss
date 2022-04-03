@@ -52,3 +52,20 @@ html {
     overflow-x: hidden;
   }
 }
+
+.ant-alert {
+  position: fixed;
+  z-index: 1000;
+}
+.alert {
+  @include breakpoint(mobile_landscape) {
+    width: getRem(500);
+    text-align: center;
+    height: getRem(70);
+    .ant-alert-message {
+      font-size: getRem(18);
+  
+    }
+  }
+  
+}

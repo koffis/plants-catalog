@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   PhoneFilled,
@@ -25,6 +26,7 @@ const SearchCustom = styled(Search)`
 `;
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const count = useSelector(state => state.cart.count);
 
   const onSearch = (value) => console.log(value);
 
@@ -42,8 +44,11 @@ const Header = () => {
           <Link to="/">Відгуки клієнтів</Link>
         </span>
         <span className="header-desktop-menu-right">
-          <Link to="/cart">
-            Кошик <ShoppingCartOutlined />
+          <Link style={{ display: "flex" }} to="/cart">
+            <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+            {count !== 0 && <div className="header-desktop-menu-right-count">
+              {count}
+            </div>}
           </Link>
         </span>
       </div>
@@ -116,7 +121,9 @@ const Header = () => {
         enterButton
       />
       <Link to="/cart">
-        <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+        {count !== 0 ? <div className="header-desktop-menu-right-count">
+          {count}
+        </div> : <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />}
       </Link>
     </div>
   );

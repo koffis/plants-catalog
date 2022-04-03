@@ -22,7 +22,7 @@ import { getRem } from "../../utils";
 import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
-import { addCartItem } from "../CartPage/actions/cartActions";
+import { addCartItem, increaseCount } from "../CartPage/actions/cartActions";
 import { Alert } from 'antd';
 
 import "./index.scss";
@@ -53,6 +53,7 @@ const GoodPage = () => {
   let history = useHistory();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
+  const [success, setSuccess] = useState(false);
 
   const { images, name, price, code, description } = useSelector(state => state.goods);
 
@@ -61,6 +62,7 @@ const GoodPage = () => {
       <Header />
       {header ? (
         <div className="goodPage-desktop">
+          {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
           <h3>{name}</h3>
           <div className="goodPage-desktop-main">
             <ImageGallery
@@ -76,13 +78,18 @@ const GoodPage = () => {
               <p>Код : {code}</p>
               <span>
                 <InputNumber min={1} value={value} onChange={setValue} />
-                <button onClick={() => dispatch(addCartItem({
-                  image: images[0].original,
-                  name,
-                  code,
-                  price,
-                  amount: value
-                }))}>Купити</button>
+                <button onClick={() => {
+                  dispatch(addCartItem({
+                    image: images[0].original,
+                    name,
+                    code,
+                    price,
+                    amount: value
+                  }));
+                  dispatch(increaseCount())
+                  setSuccess(true);
+                  setTimeout(() => setSuccess(false), 4000);
+                }}>Купити</button>
                 <hr />
               </span>
               <div className="goodPage-desktop-main-info-item">
@@ -130,6 +137,7 @@ const GoodPage = () => {
         </div>
       ) : (
         <div className="goodPage">
+          {success && <Alert style={{ position: "fixed", top: '50px', left: '15%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
           <span onClick={history.goBack} className="goodPage-back">
             <LeftOutlined /> Назад
           </span>
@@ -145,13 +153,20 @@ const GoodPage = () => {
               showPlayButton={false}
               thumbnailPosition="left"
             />
-            <RedButton type="primary" onClick={() => dispatch(addCartItem({
-              image: images[0].original,
-              name,
-              code,
-              price
-            }))}>
-              <ShoppingCartOutlined /> Додати в корзину
+            <RedButton type="primary" onClick={() => {
+              dispatch(addCartItem({
+                image: images[0].original,
+                name,
+                code,
+                price,
+                amount: value
+              }));
+              dispatch(increaseCount())
+              setSuccess(true);
+              setTimeout(() => setSuccess(false), 4000);
+            }}>
+              <ShoppingCartOutlined
+              /> Додати в корзину
             </RedButton>
             {/* <GreenButton type="primary">Купити зараз</GreenButton> */}
           </div>

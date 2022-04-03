@@ -41,6 +41,15 @@ const goodsList = [
     discount: "1560$",
     cart: true,
   },
+  {
+    image:
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+    name: "Lorem ipsum",
+    code: "1337228",
+    price: "1560$",
+    discount: "1560$",
+    cart: true,
+  },
 ];
 
 const MainBlock = ({ isGood }) => {

@@ -19,6 +19,17 @@
     padding: getRem(32) getRem(147);
     &-left,
     &-right {
+      &-count {
+        width: getRem(20);
+        height: getRem(20);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        border-radius: 50%;
+        margin-left: getRem(5);
+        color: white;
+      }
       a {
         font-size: getRem(16);
         color: white;
