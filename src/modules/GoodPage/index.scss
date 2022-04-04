@@ -147,3 +147,9 @@
     }
   }
 }
+
+.image-gallery-content.left .image-gallery-slide .image-gallery-image, .image-gallery-content.right .image-gallery-slide .image-gallery-image {
+  width: 700px;
+  height: 450px;
+  object-fit: cover;
+}

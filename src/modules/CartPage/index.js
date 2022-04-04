@@ -26,6 +26,14 @@ const CartPage = () => {
     close={true}
   />);
 
+  const listOfGoods = () => {
+    let result = [];
+    for (let i = 0; i < cart.length; i++) {
+      result.push([cart[i].code, cart[i].amount]);
+    }
+    return Object.fromEntries(result);
+  }
+
   const getSum = () => {
     let sum = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -33,6 +41,9 @@ const CartPage = () => {
     };
     return sum;
   };
+
+  let price = getSum();
+  let itemsList = listOfGoods();
 
   return (
     <div>
@@ -42,9 +53,9 @@ const CartPage = () => {
         <div className="cart-goods">
           {cartList}
         </div>
-        <h4 className="cart-sum"><b>Загальна сума:</b> {getSum()} ГРН</h4>
+        <h4 className="cart-sum"><b>Загальна сума:</b> {price} ГРН</h4>
         <h5>Оформлення замовлення:</h5>
-        <Delivery />
+        <Delivery cart={itemsList} price={price} />
       </div>
       {header && <Footer />}
     </div>

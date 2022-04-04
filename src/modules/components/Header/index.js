@@ -37,15 +37,15 @@ const Header = () => {
       <div className="header-desktop-menu">
         <span className="header-desktop-menu-left">
           <Link to="/">Каталог</Link>
-          <Link to="/">Доставка і оплата</Link>
+          {/* <Link to="/">Доставка і оплата</Link> */}
           <Link to="contacts">Контакти</Link>
           <Link to="/guarantee">Гарантії</Link>
           <Link to="/about">Про магазин</Link>
-          <Link to="/">Відгуки клієнтів</Link>
+          {/* <Link to="/">Відгуки клієнтів</Link> */}
         </span>
         <span className="header-desktop-menu-right">
           <Link style={{ display: "flex" }} to="/cart">
-            <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+            <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
             {count.length !== 0 && <div className="header-desktop-menu-right-count">
               {count.length}
             </div>}

@@ -24,7 +24,7 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  return loading ? <></> : (
+  return loading ? <Preloader /> : (
     <div>
       <Header />
       <div className="home">

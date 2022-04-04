@@ -26,6 +26,8 @@ import credit from "../../assets/images/credit.svg";
 import { addCartItem } from "../CartPage/actions/cartActions";
 import { Alert } from 'antd';
 import { receiveGoods } from "./actions/goodsActions";
+import { receiveHome } from "../HomePage/actions/homeActions";
+import Preloader from '../components/Preloader'
 
 import "./index.scss";
 
@@ -49,23 +51,27 @@ const GreenButton = styled(Button)`
 
 const GoodPage = () => {
   let history = useHistory();
+  const dispatch = useDispatch();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
   const [success, setSuccess] = useState(false);
-  const { state } = useLocation();
+  // const { state } = useLocation();
 
-  const code = state.code;
+  // const code = state.code;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(receiveGoods(code))
+    dispatch(receiveGoods(code));
+    dispatch(receiveHome())
   }, []);
-  const dispatch = useDispatch();
 
-  const { images, name, price, description } = useSelector(state => state.goods);
+  const { images, name, price, description, loading } = useSelector(state => state.goods);
   const popular = useSelector(state => state.home.popular);
 
-  return (
+  return loading ? <Preloader /> : (
     <div>
       <Header />
       {header ? (
@@ -74,6 +80,7 @@ const GoodPage = () => {
           <h3>{name}</h3>
           <div className="goodPage-desktop-main">
             <ImageGallery
+              className='goodPage-desktop-main-gallery'
               items={images}
               showFullscreenButton={false}
               showPlayButton={false}

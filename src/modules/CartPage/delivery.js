@@ -1,9 +1,11 @@
 import { Formik, Field, Form } from "formik";
 import novaposhta from "../../assets/images/novaposhta.svg";
 import banks from "../../assets/images/banks.png";
+import { buyGoods } from "./api";
+
 import './index.scss';
 
-const Delivery = () => {
+const Delivery = ({ cart, price }) => {
   return (
     <div className="cart-delivery">
       <h4>1. Контактні дані</h4>
@@ -19,8 +21,11 @@ const Delivery = () => {
           comment: "",
         }}
         onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+          buyGoods({
+            cart,
+            price,
+            ...values
+          })
         }}
       >
         {({ values }) => (

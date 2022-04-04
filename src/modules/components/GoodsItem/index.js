@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ShoppingCartOutlined, CloseOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import goods from "../../../assets/images/fertilizers.png";
@@ -7,6 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { deleteCartItem, changeItemAmount, addCartItem } from "../../CartPage/actions/cartActions";
 import { InputNumber } from "antd";
+import { receiveGoods } from "../../GoodPage/actions/goodsActions";
 
 
 import "./index.scss";
@@ -36,7 +36,6 @@ const GoodsItem = ({
 }) => {
   const { header } = useWindow();
   const dispatch = useDispatch();
-  const [value, setValue] = useState(amount);
 
   const handleAmount = (event) => {
     dispatch(changeItemAmount({ code, amount: event }))
@@ -44,24 +43,31 @@ const GoodsItem = ({
 
   return (
     <div className="goods">
-      <Link to={{ pathname: "/goods", state: { code } }}>
+      <Link to={`/goods?code=${code}`} onClick={() => {
+        dispatch(receiveGoods(code));
+        window.scrollTo(0, 0);
+      }}>
         <img src={image} alt="goods" />
       </Link>
-      {close && <CloseOutlined
-        className="goods-cart"
-        style={{ fontSize: 30, color: "red" }}
-        onClick={() => {
-          dispatch(deleteCartItem(code))
-        }}
-      />}
-      {cart && header === false && (
-        <Link to="/goods">
-          <ShoppingCartOutlined
-            className="goods-cart"
-            style={{ fontSize: 30, color: "#3c9806" }}
-          />
-        </Link>
-      )}
+      {
+        close && <CloseOutlined
+          className="goods-cart"
+          style={{ fontSize: 30, color: "red" }}
+          onClick={() => {
+            dispatch(deleteCartItem(code))
+          }}
+        />
+      }
+      {
+        cart && header === false && (
+          <Link to="/goods">
+            <ShoppingCartOutlined
+              className="goods-cart"
+              style={{ fontSize: 30, color: "#3c9806" }}
+            />
+          </Link>
+        )
+      }
       {close && <InputNumber min={1} value={amount} onChange={handleAmount} />}
       <div className="goods-info">
         <h4>{name}</h4>
@@ -74,7 +80,7 @@ const GoodsItem = ({
           <GreenButton>Купити</GreenButton>
         )}
       </span>
-    </div>
+    </div >
   );
 };
 
