@@ -2,25 +2,35 @@ import {
     DELETE_GOOD,
     ADD_GOOD,
     CHANGE_AMOUNT,
-    INCREASE_COUNT,
-    DECREASE_COUNT
 } from "../const";
-
-const replaceAmount = (state, goods) => {
-    let replaceObj = state.cart.find(element => element.code === goods.code);
-    return replaceObj.amount = goods.amount;
-}
-
 
 const initialState = {
     cart: [],
     count: 0
 };
 
+const addGood = (state, goods) => {
+    if (state.cart.length != 0) {
+        if (state.cart.filter(item => item.code === goods.code).length !== 0) {
+            const newCart = state.cart.map(element => {
+                if (element.code === goods.code) {
+                    element.amount += goods.amount
+                }
+                return element
+            })
+            console.log(newCart)
+            return [...newCart]
+        }
+        return [...state.cart, goods]
+    }
+    return [...state.cart, goods]
+}
+
+
 const handlers = {
     [ADD_GOOD]: (state, { payload: { goods } }) => ({
         ...state,
-        cart: [...state.cart, goods],
+        cart: addGood(state, goods),
     }),
     [DELETE_GOOD]: (state, { payload: { code } }) => ({
         ...state,
@@ -35,8 +45,6 @@ const handlers = {
             return element
         }),
     }),
-    [INCREASE_COUNT]: (state) => ({ ...state, count: state.count += 1 }),
-    [DECREASE_COUNT]: (state) => ({ ...state, count: state.count -= 1 }),
 
     DEFAULT: (state) => state,
 };

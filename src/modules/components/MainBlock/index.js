@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import verify from "../../../assets/images/verify.svg";
 import check from "../../../assets/images/check.svg";
 import packages from "../../../assets/images/packages.svg";
@@ -5,62 +6,18 @@ import GoodsList from "../GoodsList";
 
 import "./index.scss";
 
-const goodsList = [
-  {
-    image:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
-    name: "Lorem ipsum",
-    code: "1337228",
-    price: "1560$",
-    discount: false,
-    cart: true,
-  },
-  {
-    image:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
-    name: "Lorem ipsum",
-    code: "1337228",
-    price: "1560$",
-    discount: false,
-    cart: true,
-  },
-  {
-    image:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
-    name: "Lorem ipsum",
-    code: "1337228",
-    price: "1560$",
-    discount: false,
-    cart: true,
-  },
-  {
-    image:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
-    name: "Lorem ipsum",
-    code: "1337228",
-    price: "1560$",
-    discount: "1560$",
-    cart: true,
-  },
-  {
-    image:
-      "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
-    name: "Lorem ipsum",
-    code: "1337228",
-    price: "1560$",
-    discount: "1560$",
-    cart: true,
-  },
-];
+const MainBlock = ({ isGood }) => {
 
-const MainBlock = ({ isGood, popular, discount, season }) => {
+  const popular = useSelector(state => state.home.popular);
+  const discount = useSelector(state => state.home.discount);
+  const season = useSelector(state => state.home.season);
 
   return (
     <div className="main-block">
       {isGood ? null : (
         <>
           <GoodsList title="Популярні товари" goods={popular} />
-          <GoodsList title="Сезонний вибір" goods={goodsList} />
+          <GoodsList title="Сезонний вибір" goods={season} />
         </>
       )}
       <div className="main-block-betters">
@@ -86,7 +43,7 @@ const MainBlock = ({ isGood, popular, discount, season }) => {
           </div>
         </div>
       </div>
-      <GoodsList title="Акції" goods={goodsList} />
+      <GoodsList title="Акції" goods={discount} />
     </div>
   );
 };

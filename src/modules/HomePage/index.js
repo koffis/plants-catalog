@@ -16,9 +16,7 @@ const HomePage = () => {
   const { header } = useWindow();
   const dispatch = useDispatch();
 
-  const popular = useSelector(state => state.home.popular);
-  const discount = useSelector(state => state.home.discount);
-  const season = useSelector(state => state.home.season);
+
   const loading = useSelector(state => state.home.loading);
 
   useEffect(() => {
@@ -33,7 +31,7 @@ const HomePage = () => {
         <Categories header={header} />
         {header ? null : <div className="home-fertilizers">Добрива</div>}
         {header && <Slider />}
-        {header && <MainBlock popular={popular} discount={discount} season={season} />}
+        {header && <MainBlock />}
         {header ? <Footer /> : <FooterMobile />}
       </div>
     </div>

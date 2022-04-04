@@ -10,7 +10,7 @@
 .header-desktop {
   background-color: rgb(7, 137, 67);
   &-menu {
-    z-index: 2;
+    z-index: 1000;
     width: 100%;
     background-color: rgb(7, 137, 67);
     position: fixed;

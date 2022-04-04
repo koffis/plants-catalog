@@ -4,17 +4,23 @@
   margin-left: getRem(20);
   width: getRem(158);
   height: getRem(165);
+  border-radius: getRem(8);
+  box-shadow: 0px 0px 13px 0px rgba(219,219,219,0.83);
+  -webkit-box-shadow: 0px 0px 13px 0px rgba(219,219,219,0.83);
+  -moz-box-shadow: 0px 0px 13px 0px rgba(219,219,219,0.83);
+  padding: getRem(5) getRem(5);
   @include breakpoint(mobile_landscape) {
+    padding: getRem(10) getRem(10);
     width: getRem(264);
     height: unset;
   }
   img {
     object-fit: cover;
-    width: inherit;
+    width: 100%;
     height: getRem(100);
     @include breakpoint(mobile_landscape) {
-      width: getRem(264);
-      height: getRem(231);
+      width: 100%;
+      height: getRem(210);
     }
   }
   h4 {
@@ -50,11 +56,19 @@
     }
   }
   &-cart {
+    padding: getRem(5);  
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 4px rgba(112,112,112,0.83);
+    -webkit-box-shadow: 0px 0px 10px 4px rgba(112,112,112,0.83);
+    -moz-box-shadow: 0px 0px 10px 4px rgba(112,112,112,0.83);
     position: absolute;
     margin-left: getRem(-30);
     color: white;
   }
   &:hover {
-    background-color: rgb(238, 238, 238);
+    box-shadow: 0px 0px 13px 5px rgba(189,189,189,0.83);
+    -webkit-box-shadow: 0px 0px 13px 5px rgba(189,189,189,0.83);
+    -moz-box-shadow: 0px 0px 13px 5px rgba(189,189,189,0.83);
   }
 }

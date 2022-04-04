@@ -5,7 +5,7 @@ import goods from "../../../assets/images/fertilizers.png";
 import { useWindow, getRem } from "../../../utils";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { deleteCartItem, changeItemAmount, decreaseCount, addCartItem } from "../../CartPage/actions/cartActions";
+import { deleteCartItem, changeItemAmount, addCartItem } from "../../CartPage/actions/cartActions";
 import { InputNumber } from "antd";
 
 
@@ -51,7 +51,6 @@ const GoodsItem = ({
         className="goods-cart"
         style={{ fontSize: 30, color: "red" }}
         onClick={() => {
-          dispatch(decreaseCount())
           dispatch(deleteCartItem(code))
         }}
       />}
@@ -59,7 +58,7 @@ const GoodsItem = ({
         <Link to="/goods">
           <ShoppingCartOutlined
             className="goods-cart"
-            style={{ fontSize: 30, color: "white" }}
+            style={{ fontSize: 30, color: "#3c9806" }}
           />
         </Link>
       )}

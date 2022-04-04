@@ -11,6 +11,7 @@ const AboutPage = () => {
     window.scrollTo(0, 0);
   }, []);
   const { header } = useWindow();
+
   return (
     <div>
       <Header />

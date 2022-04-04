@@ -26,7 +26,7 @@ const SearchCustom = styled(Search)`
 `;
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const count = useSelector(state => state.cart.count);
+  const count = useSelector(state => state.cart.cart);
 
   const onSearch = (value) => console.log(value);
 
@@ -46,8 +46,8 @@ const Header = () => {
         <span className="header-desktop-menu-right">
           <Link style={{ display: "flex" }} to="/cart">
             <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
-            {count !== 0 && <div className="header-desktop-menu-right-count">
-              {count}
+            {count.length !== 0 && <div className="header-desktop-menu-right-count">
+              {count.length}
             </div>}
           </Link>
         </span>
@@ -121,8 +121,8 @@ const Header = () => {
         enterButton
       />
       <Link to="/cart">
-        {count !== 0 ? <div className="header-desktop-menu-right-count">
-          {count}
+        {count.length !== 0 ? <div className="header-desktop-menu-right-count">
+          {count.length}
         </div> : <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />}
       </Link>
     </div>

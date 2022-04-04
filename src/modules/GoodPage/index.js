@@ -23,7 +23,7 @@ import { getRem } from "../../utils";
 import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
-import { addCartItem, increaseCount } from "../CartPage/actions/cartActions";
+import { addCartItem } from "../CartPage/actions/cartActions";
 import { Alert } from 'antd';
 import { receiveGoods } from "./actions/goodsActions";
 
@@ -94,7 +94,6 @@ const GoodPage = () => {
                     price,
                     amount: value
                   }));
-                  dispatch(increaseCount())
                   setSuccess(true);
                   setTimeout(() => setSuccess(false), 4000);
                 }}>Купити</button>
@@ -169,7 +168,6 @@ const GoodPage = () => {
                 price,
                 amount: value
               }));
-              dispatch(increaseCount())
               setSuccess(true);
               setTimeout(() => setSuccess(false), 4000);
             }}>
