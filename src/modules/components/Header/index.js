@@ -36,14 +36,17 @@ const Header = () => {
     <div className="header-desktop">
       <div className="header-desktop-menu">
         <span className="header-desktop-menu-left">
-          <Link to="/">Каталог</Link>
-          {/* <Link to="/">Доставка і оплата</Link> */}
+          <Link to="/">
+            <img src={logo} alt="tree" />
+          </Link>
+          <Link to="/shop">Каталог</Link>
           <Link to="contacts">Контакти</Link>
           <Link to="/guarantee">Гарантії</Link>
           <Link to="/about">Про магазин</Link>
-          {/* <Link to="/">Відгуки клієнтів</Link> */}
         </span>
         <span className="header-desktop-menu-right">
+        <SearchCustom placeholder="Пошук..." onSearch={onSearch} enterButton />
+        <Button ghost>Акції</Button>
           <Link style={{ display: "flex" }} to="/cart">
             <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
             {count.length !== 0 && <div className="header-desktop-menu-right-count">
@@ -52,13 +55,6 @@ const Header = () => {
           </Link>
         </span>
       </div>
-      <div className="header-desktop-more">
-        <Link to="/">
-          <img src={logo} alt="tree" />
-        </Link>
-        <SearchCustom placeholder="Пошук..." onSearch={onSearch} enterButton />
-        <Button ghost>Акції</Button>
-      </div>
     </div>
   ) : open ? (
     <div className="header">
@@ -66,7 +62,7 @@ const Header = () => {
         <div className="header-menu-info">
           <span>
             <PhoneFilled style={{ fontSize: 20 }} />
-            <span className="header-menu-info-phone">(093) 000-11-23</span>
+            <span className="header-menu-info-phone">(097) 49 331 67</span>
           </span>
           <CloseOutlined
             style={{ fontSize: 25 }}

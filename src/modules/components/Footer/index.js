@@ -21,8 +21,7 @@ const Footer = () => {
           style={{ color: "white" }}
         />
         <div className="footer-info-contacts">
-          <p>+38 (067) 60 360 52</p>
-          <p>+38 (067) 60 360 52</p>
+          <p>+38 (097) 49 331 67</p>
           <h4>Графік роботи:</h4>
           <p>Пн - Сб 8:00 - 19:00</p>
           <p>Нд - вихідний</p>
@@ -32,7 +31,7 @@ const Footer = () => {
         <EnvironmentOutlined className="footer-map-icon" />
         <p>
           м.Тернопіль
-          <br /> вул, Джерельна, 35
+          <br /> вул. Анатолія Живова, 9В
         </p>
       </div>
       <div className="footer-links">

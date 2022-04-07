@@ -29,7 +29,7 @@
     display: flex;
     flex-wrap: wrap;
     @include breakpoint(mobile_landscape) {
-      margin-top: getRem(10);
+      margin-top: getRem(100);
       justify-content: center;
       flex-wrap: nowrap;
     }

@@ -10,15 +10,22 @@
 .header-desktop {
   background-color: rgb(7, 137, 67);
   &-menu {
-    z-index: 1000;
+    top: 0;
+    position: fixed;
+    z-index: 999;
     width: 100%;
     background-color: rgb(7, 137, 67);
-    position: fixed;
     display: flex;
     justify-content: space-between;
-    padding: getRem(32) getRem(147);
+    padding: getRem(10) getRem(147);
     &-left,
     &-right {
+      display: flex;
+      align-items: center;
+      img {
+        width: getRem(131);
+        height: getRem(61);
+      }
       &-count {
         width: getRem(20);
         height: getRem(20);
@@ -31,22 +38,11 @@
         color: white;
       }
       a {
+        margin-left: getRem(20);
         font-size: getRem(18);
         color: white;
         padding-right: getRem(27);
       }
-    }
-  }
-  &-more {
-    display: flex;
-    align-items: center;
-    padding-top: getRem(90);
-    margin-left: getRem(144);
-    padding-bottom: getRem(30);
-    img {
-      width: getRem(181);
-      height: getRem(81);
-      margin-right: getRem(60);
     }
   }
 }

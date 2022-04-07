@@ -1,11 +1,17 @@
 import { Formik, Field, Form } from "formik";
+import { useHistory } from "react-router-dom";
+
 import novaposhta from "../../assets/images/novaposhta.svg";
 import banks from "../../assets/images/banks.png";
+import { clearCart } from './actions/cartActions';
 import { buyGoods } from "./api";
+import { useDispatch } from "react-redux";
 
 import './index.scss';
 
-const Delivery = ({ cart, price }) => {
+const Delivery = ({ cart, price, setSuccess }) => {
+  let history = useHistory();
+  const dispatch = useDispatch();
   return (
     <div className="cart-delivery">
       <h4>1. Контактні дані</h4>
@@ -22,10 +28,13 @@ const Delivery = ({ cart, price }) => {
         }}
         onSubmit={async (values) => {
           buyGoods({
-            cart,
+            line_items: cart,
             price,
             ...values
-          })
+          }).then(() => {
+            setSuccess(true); 
+            setTimeout(() => setSuccess(false), 5000)});
+            dispatch(clearCart());
         }}
       >
         {({ values }) => (

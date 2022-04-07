@@ -2,6 +2,7 @@ import {
     DELETE_GOOD,
     ADD_GOOD,
     CHANGE_AMOUNT,
+    CLEAR_CART
 } from "../const";
 
 const initialState = {
@@ -28,6 +29,7 @@ const addGood = (state, goods) => {
 
 
 const handlers = {
+    [CLEAR_CART]: () => ({cart: [], count: 0 }),
     [ADD_GOOD]: (state, { payload: { goods } }) => ({
         ...state,
         cart: addGood(state, goods),

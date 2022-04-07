@@ -1,9 +1,3 @@
 import http from '../../http';
-import { API_V1_URL } from "../../constants/constants";
 
-
-const EQUIPMENT_URL = `${API_V1_URL}/equipment`;
-const authHeader = { Authorization: `Bearer ${localStorage.getItem("id_token")}` };
-
-
-export const getEquipment = () => http.get(EQUIPMENT_URL, {}, authHeader);
+export const getAllItems = () => http.get('http://194.187.154.148:8080/api/v1/shop', {});

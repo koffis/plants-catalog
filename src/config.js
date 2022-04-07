@@ -14,5 +14,5 @@ export const ROUTES = {
   guarantees: "/guarantee",
   goods: "/goods",
   about: "/about",
-  shop: '/shop'
+  shop: '/shop',
 };

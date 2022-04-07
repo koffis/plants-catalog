@@ -21,9 +21,8 @@ const ContactsPage = () => {
         <p className="contacts-schedule">Графік роботи:</p>
         <p className="contacts-work">Пн - Сб 8:00 - 19:00</p>
         <p className="contacts-weekend">Нд - вихідний</p>
-        <p className="contacts-number">+38 (067) 60 360 52</p>
-        <p className="contacts-number">+38 (067) 60 360 52</p>
-        <p className="contacts-address">м.Тернопіль вул, Джерельна, 35</p>
+        <p className="contacts-number">+38 (097) 49 331 67</p>
+        <p className="contacts-address">м.Тернопіль вул. Анатолія Живова, 9В</p>
       </div>
       {header && <MainBlock />}
       {header ? <Footer /> : <FooterMobile />}

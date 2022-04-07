@@ -59,6 +59,8 @@ html {
 }
 .alert {
   @include breakpoint(mobile_landscape) {
+    position: fixed;
+    z-index: 1000;
     width: getRem(500);
     text-align: center;
     height: getRem(70);

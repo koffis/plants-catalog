@@ -27,7 +27,7 @@ import { addCartItem } from "../CartPage/actions/cartActions";
 import { Alert } from 'antd';
 import { receiveGoods } from "./actions/goodsActions";
 import { receiveHome } from "../HomePage/actions/homeActions";
-import Preloader from '../components/Preloader'
+import Preloader from '../components/Preloader';
 
 import "./index.scss";
 

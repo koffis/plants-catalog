@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import GoodsItem from "./../components/GoodsItem/index";
 import Delivery from "./delivery";
 import { useWindow } from "../../utils";
+import { Alert } from 'antd';
 import Footer from '../components/Footer';
 import "./index.scss";
 
@@ -11,6 +12,9 @@ const CartPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [success, setSuccess] = useState(false);
+
 
   const { header } = useWindow();
   const cart = useSelector(state => state.cart.cart);
@@ -26,13 +30,18 @@ const CartPage = () => {
     close={true}
   />);
 
-  const listOfGoods = () => {
-    let result = [];
-    for (let i = 0; i < cart.length; i++) {
-      result.push([cart[i].code, cart[i].amount]);
-    }
-    return Object.fromEntries(result);
-  }
+  // const listOfGoods = () => {
+  //   let result = [];
+  //   for (let i = 0; i < cart.length; i++) {
+  //     result.push([cart[i].code, cart[i].amount]);
+  //   }
+  //   return Object.fromEntries(result);
+  
+  // }
+
+  const listOfGoods = cart.map(item => {
+    return { product_id: +item.code, quantity: item.amount}
+  });
 
   const getSum = () => {
     let sum = 0;
@@ -43,10 +52,10 @@ const CartPage = () => {
   };
 
   let price = getSum();
-  let itemsList = listOfGoods();
 
   return (
     <div>
+      {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Замовлення створене! Очікуйте дзвінка." type="success" showIcon />}
       <Header />
       <div className="cart">
         <h3 className="cart-current">Корзина</h3>
@@ -55,7 +64,7 @@ const CartPage = () => {
         </div>
         <h4 className="cart-sum"><b>Загальна сума:</b> {price} ГРН</h4>
         <h5>Оформлення замовлення:</h5>
-        <Delivery cart={itemsList} price={price} />
+        <Delivery cart={listOfGoods} price={price} setSuccess={setSuccess} />
       </div>
       {header && <Footer />}
     </div>
