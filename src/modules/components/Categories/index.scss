@@ -3,6 +3,7 @@
 .categories-block {
     margin-top: getRem(100);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 

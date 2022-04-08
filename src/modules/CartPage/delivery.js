@@ -50,7 +50,7 @@ const Delivery = ({ cart, price, setSuccess }) => {
                 Нова Пошта
               </label>
               {values.delivery === "Нова пошта" && (
-                <div>
+                <div className="poshta-block">
                   <Field className='cart-delivery-input' required name="town" placeholder="Місто" />
                   <Field className='cart-delivery-input' required name="department" placeholder="Відділення" />
                 </div>
@@ -85,9 +85,11 @@ const Delivery = ({ cart, price, setSuccess }) => {
               as="textarea"
               name="comment"
               placeholder="Коментар до замовлення"
+              maxlength='180'
             />
             <p>
-              Коли ви здійснюєте покупку в ншому магазині, ви погоджуєтесь з
+              Коли ви здійснюєте покупку в ншому магазині, 
+              ви погоджуєтесь з
               <b> користувацьким договором</b>
             </p>
             <button className="cart-delivery-button" type="submit">Оформити замовлення</button>

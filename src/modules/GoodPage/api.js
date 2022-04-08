@@ -1,3 +1,3 @@
 import http from '../../http';
 
-export const getGood = (code) => http.get(`http://194.187.154.148:8080/api/v1/goods/${code}`, {});
+export const getGood = (code) => http.get(`https://api.greengarden.org.ua/api/v1/goods/${code}`, {});

@@ -6,6 +6,7 @@ import Delivery from "./delivery";
 import { useWindow } from "../../utils";
 import { Alert } from 'antd';
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 const CartPage = () => {
@@ -59,6 +60,7 @@ const CartPage = () => {
       <Header />
       <div className="cart">
         <h3 className="cart-current">Корзина</h3>
+        {listOfGoods.length === 0 && <Link to='/shop' className="empty-cart">Корзина порожня</Link> }
         <div className="cart-goods">
           {cartList}
         </div>

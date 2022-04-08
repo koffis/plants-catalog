@@ -1,31 +1,31 @@
 import { useSelector } from "react-redux";
-import GoodsItem from "../GoodsItem";
+import { Link } from "react-router-dom";
+import GoodsList from "../GoodsList";
 
 import "../../HomePage/index.scss";
 
 const FooterMobile = () => {
+  
+  const popular = useSelector(state => state.home.popular);
+  const discount = useSelector(state => state.home.discount);
+  const season = useSelector(state => state.home.season);
+
   return (
     <div>
-      <h3 className="home-popular">Популярні товари</h3>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
-          <GoodsItem />
-          <GoodsItem />
+          <GoodsList title="Популярні товари" goods={popular} />
         </div>
       </div>
-      <div className="home-newsorts">Нові сорти</div>
-      <h3 className="home-popular">Сезонний вибір</h3>
+      <Link to={`/shop=Новинки`}><div className="home-newsorts">Нові сорти</div></Link>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
-          <GoodsItem />
-          <GoodsItem />
+          <GoodsList title="Сезонний вибір" goods={season} />  
         </div>
       </div>
-      <h3 className="home-popular">Акції</h3>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
-          <GoodsItem discount="1560" />
-          <GoodsItem discount="1560" />
+          <GoodsList title="Акції" goods={discount} />
         </div>
       </div>
     </div>

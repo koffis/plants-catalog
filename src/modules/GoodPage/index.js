@@ -84,7 +84,7 @@ const GoodPage = () => {
               items={images}
               showFullscreenButton={false}
               showPlayButton={false}
-              thumbnailPosition="left"
+              thumbnailPosition="bottom"
               showNav={false}
               slideOnThumbnailOver={true}
             />
@@ -165,9 +165,9 @@ const GoodPage = () => {
               items={images}
               showFullscreenButton={false}
               showPlayButton={false}
-              thumbnailPosition="left"
+              thumbnailPosition="bottom"
             />
-            <RedButton type="primary" onClick={() => {
+            <GreenButton type="primary" onClick={() => {
               dispatch(addCartItem({
                 image: images[0].original,
                 name,
@@ -180,7 +180,7 @@ const GoodPage = () => {
             }}>
               <ShoppingCartOutlined
               /> Додати в корзину
-            </RedButton>
+            </GreenButton>
             {/* <GreenButton type="primary">Купити зараз</GreenButton> */}
           </div>
           <hr />

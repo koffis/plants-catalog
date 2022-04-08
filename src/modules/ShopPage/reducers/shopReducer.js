@@ -32,7 +32,7 @@ const handlers = {
         search: search,
         filter: filter,
     }),
-    [GET_SHOP_FAILURE]: (state) => ({ ...state, loading: false }),
+    [GET_SHOP_FAILURE]: (state) => ({ ...state, shop: [], loading: false }),
     DEFAULT: (state) => state,
 };
 

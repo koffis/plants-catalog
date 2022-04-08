@@ -31,6 +31,9 @@
     line-height: getRem(16);
   }
   &-info {
+    h4 {
+      font-size: getRem(14);
+    }
     @include breakpoint(mobile_landscape) {
       display: flex;
       justify-content: space-between;
@@ -47,7 +50,7 @@
     }
   }
   &-price {
-    font-size: getRem(18);
+    font-size: getRem(14);
     color: #3c9806;
     display: flex;
     justify-content: space-between;
@@ -55,6 +58,9 @@
     &-old {
       color: rgb(156, 156, 156);
       text-decoration: line-through;
+    }
+    @include breakpoint(mobile_landscape) {
+      font-size: getRem(18);
     }
   }
   &-cart {
