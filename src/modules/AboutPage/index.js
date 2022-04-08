@@ -1,18 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "../components/Header";
 import FooterMobile from "./../components/FooterMobile/index";
 import Footer from "../components/Footer";
 import MainBlock from "../components/MainBlock";
 import { useWindow } from "../../utils";
+import { receiveHome } from "../HomePage/actions/homeActions";
+import mother from '../../assets/images/mother.jpg';
+import mother2 from '../../assets/images/mother2.jpg';
+import Preloader from "../components/Preloader";
+
 import "./index.scss";
 
 const AboutPage = () => {
+
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(receiveHome());
+    setTimeout(() => setLoading(false), 500);
   }, []);
   const { header } = useWindow();
 
-  return (
+  return loading ? <Preloader /> : (
     <div>
       <Header />
       <div className="about">
@@ -31,8 +44,16 @@ const AboutPage = () => {
         <br/>
         <br/>
         На останок, Ми знаходимось в м. Тернопіль, вул. Живова 9в, Центральний ринок. Тел. 0974933167. 
-        Чекаємо на ваш вибір, ми завжди люб’язно вас зустрінемо
+        Чекаємо на ваш вибір, ми завжди люб’язно вас зустрінемо.
         </p>
+        <div className="about-image">
+          <a href='https://www.facebook.com/green.garden.ternopil' target="_blank" rel="noopener noreferrer">
+            <img src={mother} alt='mother' />
+          </a>
+          <a href='https://www.facebook.com/green.garden.ternopil' target="_blank" rel="noopener noreferrer">
+            <img src={mother2} alt='mother' />
+          </a>
+        </div>
       </div>
       {header && <MainBlock />}
       {header ? <Footer /> : <FooterMobile />}

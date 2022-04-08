@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   PhoneFilled,
   CloseOutlined,
@@ -11,12 +12,13 @@ import {
 import { Button } from "antd";
 import styled from "styled-components";
 import { Input } from "antd";
-
 import { useWindow } from "../../../utils";
 
 import { getRem } from "../../../utils";
 import logo from "../../../assets/images/logo.svg";
+
 import "./index.scss";
+
 
 const { Search } = Input;
 
@@ -25,10 +27,13 @@ const SearchCustom = styled(Search)`
   margin-right: ${getRem(30)};
 `;
 const Header = () => {
+  const history = useHistory();
   const [open, setOpen] = useState(false);
   const count = useSelector(state => state.cart.cart);
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    history.replace(`/shop?search=${value}`);
+  }
 
   const { header } = useWindow();
 
@@ -46,13 +51,12 @@ const Header = () => {
         </span>
         <span className="header-desktop-menu-right">
         <SearchCustom placeholder="Пошук..." onSearch={onSearch} enterButton />
-        <Button ghost>Акції</Button>
-          <Link style={{ display: "flex" }} to="/cart">
-            <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
-            {count.length !== 0 && <div className="header-desktop-menu-right-count">
-              {count.length}
-            </div>}
-          </Link>
+        <Link style={{ display: "flex" }} to="/cart">
+          <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
+          {count.length !== 0 && <div className="header-desktop-menu-right-count">
+            {count.length}
+          </div>}
+        </Link>
         </span>
       </div>
     </div>
@@ -72,14 +76,14 @@ const Header = () => {
           />
         </div>
         <div className="header-menu-main">
+        <Link to="/shop">
           <div className="header-menu-main-item">
             <div className="header-menu-main-item-icon">
               <AppstoreOutlined style={{ fontSize: 25 }} />
             </div>
-            <Link to="/">
               <span>Каталог товарів</span>
-            </Link>
           </div>
+          </Link>
           <Link to="/cart" className="header-menu-main-item">
             <div className="header-menu-main-item-icon">
               <ShoppingCartOutlined style={{ fontSize: 30 }} />
@@ -88,14 +92,15 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-menu-items">
+          <Link to="/">
+            <p>Головна</p>
+          </Link>
           <Link to="/about">
             <p>Про магазин</p>
           </Link>
-          <p>Доставка і оплата</p>
           <Link to="/guarantee">
             <p>Гарантії</p>
           </Link>
-          <p>Відгуки клієнтів</p>
           <Link to="/contacts">
             <p>Контакти</p>
           </Link>

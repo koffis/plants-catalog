@@ -37,27 +37,18 @@ const Footer = () => {
       <div className="footer-links">
         <Link to="/about">Про нас</Link>
         <Link to="/contacts">Контакти</Link>
-        <Link to="/">Доставка і оплата</Link>
       </div>
       <div className="footer-other">
-        <Link className="footer-other-links" to="/">
+        <Link className="footer-other-links" to="/shop">
           Каталог
-        </Link>
-        <Link className="footer-other-links" to="/">
-          Відгуки клієнтів
-        </Link>
-        <Link className="footer-other-links" to="/">
-          Підтримка
         </Link>
         <div className="footer-other-block">
           <a
             className="footer-other-block-icon"
+            target="_blank" rel="noopener noreferrer"
             href="https://www.facebook.com/SagSimyBoyko/"
           >
             <FacebookOutlined />
-          </a>
-          <a href="/" className="footer-other-block-icon">
-            <MailOutlined />
           </a>
         </div>
       </div>

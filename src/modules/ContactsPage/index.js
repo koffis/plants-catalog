@@ -1,19 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
 import { useWindow } from "../../utils";
 import Footer from "../components/Footer";
 import MainBlock from "../components/MainBlock";
+import { receiveHome } from "../HomePage/actions/homeActions";
+import Preloader from "../components/Preloader";
 
 import "./index.scss";
 
 const ContactsPage = () => {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(receiveHome());
+    setTimeout(() => setLoading(false), 500);
   }, []);
   const { header } = useWindow();
 
-  return (
+  return loading ? <Preloader /> : (
     <div>
       <Header />
       <div className="contacts">

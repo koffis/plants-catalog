@@ -6,7 +6,7 @@ import {
 } from "../const";
 
 const initialState = {
-    cart: [],
+    cart: JSON.parse(localStorage.getItem('cart')) || [],
     count: 0
 };
 
@@ -20,32 +20,50 @@ const addGood = (state, goods) => {
                 return element
             })
             console.log(newCart)
-            return [...newCart]
+            localStorage.setItem('cart', JSON.stringify([...newCart]));
+            return JSON.parse(localStorage.getItem('cart'));
         }
-        return [...state.cart, goods]
+        localStorage.setItem('cart',  JSON.stringify([...state.cart, goods]));
+        return JSON.parse(localStorage.getItem('cart'));
     }
-    return [...state.cart, goods]
+    localStorage.setItem('cart',  JSON.stringify([...state.cart, goods]));
+    return JSON.parse(localStorage.getItem('cart'));
+};
+
+const deleteGood = (state, code) => {
+    localStorage.setItem('cart',  JSON.stringify(state.cart.filter((item) => item.code != code)));
+    return JSON.parse(localStorage.getItem('cart'));
+};
+
+const changeAmount = (state, goods) => {
+    localStorage.setItem('cart',  JSON.stringify(state.cart.map(element => {
+        if (element.code === goods.code) {
+            element.amount = goods.amount
+        }
+        return element
+    })));
+    return JSON.parse(localStorage.getItem('cart'));
+};
+
+const clearCart = () => {
+    localStorage.setItem('cart', '[]');
+    return JSON.parse(localStorage.getItem('cart'));
 }
 
 
 const handlers = {
-    [CLEAR_CART]: () => ({cart: [], count: 0 }),
+    [CLEAR_CART]: () => ({cart: clearCart()}),
     [ADD_GOOD]: (state, { payload: { goods } }) => ({
         ...state,
         cart: addGood(state, goods),
     }),
     [DELETE_GOOD]: (state, { payload: { code } }) => ({
         ...state,
-        cart: state.cart.filter((item) => item.code !== code),
+        cart: deleteGood(state, code),
     }),
     [CHANGE_AMOUNT]: (state, { payload: { goods } }) => ({
         ...state,
-        cart: state.cart.map(element => {
-            if (element.code === goods.code) {
-                element.amount = goods.amount
-            }
-            return element
-        }),
+        cart: changeAmount(state, goods),
     }),
 
     DEFAULT: (state) => state,

@@ -46,7 +46,8 @@ const GoodsItem = ({
 
   return (
     <div className="goods">
-      {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
+      {header && success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
+      {!header && success && <Alert style={{ position: "fixed", top: '50px', left: '15%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
       <Link to={`/goods?code=${code}`} onClick={() => {
         dispatch(receiveGoods(code));
         window.scrollTo(0, 0);
@@ -64,12 +65,21 @@ const GoodsItem = ({
       }
       {
         cart && header === false && (
-          <Link to="/goods">
             <ShoppingCartOutlined
+              onClick={() => {
+                dispatch(addCartItem({
+                  image: image,
+                  name,
+                  code,
+                  price,
+                  amount: 1
+                }));
+                setSuccess(true);
+                setTimeout(() => setSuccess(false), 4000);
+              }}
               className="goods-cart"
               style={{ fontSize: 30, color: "#3c9806" }}
             />
-          </Link>
         )
       }
       {close && <InputNumber min={1} value={amount} onChange={handleAmount} />}

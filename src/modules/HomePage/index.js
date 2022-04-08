@@ -30,7 +30,6 @@ const HomePage = () => {
       <Header />
       <div className="home">
         <CategoriesBlock />
-        {header ? null : <div className="home-fertilizers">Добрива</div>}
         {header && <Slider />}
         {header && <MainBlock />}
         {header ? <Footer /> : <FooterMobile />}

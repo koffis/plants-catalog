@@ -23,15 +23,16 @@ const ShopPage = () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const filter = urlParams.get('filter');
+    const search = urlParams.get('search');
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        dispatch(receiveShop({page: 1, category: filter}));
-    }, [filter]);
+        dispatch(receiveShop({page: 1, category: filter, search}));
+    }, [filter, search]);
 
 
     const getNextPage = () => {
-        dispatch(receiveShop({page: page, category: filter}));
+        dispatch(receiveShop({page: page, category: filter, search}));
         setPage(page + 1);
     };
 

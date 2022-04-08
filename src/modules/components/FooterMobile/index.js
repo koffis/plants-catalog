@@ -1,4 +1,4 @@
-import { DownOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 import GoodsItem from "../GoodsItem";
 
 import "../../HomePage/index.scss";
@@ -12,9 +12,6 @@ const FooterMobile = () => {
           <GoodsItem />
           <GoodsItem />
         </div>
-        <div className="home-popular-goods-more">
-          Показати ще <DownOutlined />
-        </div>
       </div>
       <div className="home-newsorts">Нові сорти</div>
       <h3 className="home-popular">Сезонний вибір</h3>
@@ -23,18 +20,12 @@ const FooterMobile = () => {
           <GoodsItem />
           <GoodsItem />
         </div>
-        <div className="home-popular-goods-more">
-          Показати ще <DownOutlined />
-        </div>
       </div>
       <h3 className="home-popular">Акції</h3>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
           <GoodsItem discount="1560" />
           <GoodsItem discount="1560" />
-        </div>
-        <div className="home-popular-goods-more">
-          Показати ще <DownOutlined />
         </div>
       </div>
     </div>

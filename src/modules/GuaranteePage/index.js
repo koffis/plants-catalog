@@ -1,22 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Header from "../components/Header";
 import FooterMobile from "../components/FooterMobile";
 import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
 import { useWindow } from "../../utils";
+import { receiveHome } from "../HomePage/actions/homeActions";
 import Footer from "../components/Footer";
+import Preloader from "../components/Preloader";
 
 import "./index.scss";
 import MainBlock from "../components/MainBlock";
 
 const GuaranteePage = () => {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(receiveHome());
+    setTimeout(() => setLoading(false), 500);
   }, []);
   const { header } = useWindow();
 
-  return (
+
+
+  return loading ? <Preloader /> : (
     <div>
       <Header />
       <div className="guarantee">
