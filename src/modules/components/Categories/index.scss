@@ -1,0 +1,63 @@
+@import '../../../index.scss';
+
+.categories-block {
+    margin-top: getRem(100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        cursor: pointer;
+        padding: getRem(12) getRem(16);
+        background-color: #fafafa;
+        border: none;
+        border: getRem(2) solid #ccc;
+        border-radius: getRem(5);
+        margin: getRem(5);
+        font-size: getRem(16);
+        color: black;
+    }
+}
+
+body {
+    background-color: white;
+}
+
+[data-reach-menu-button] {
+    cursor: pointer;
+    padding: getRem(12) getRem(16);
+    background-color: #fafafa;
+    border: none;
+    border: getRem(2) solid #ccc;
+    border-radius: getRem(5);
+    margin: getRem(5);
+    font-size: getRem(16);
+    color: black;
+    &:hover {
+        color: #40a9ff;
+    }
+}
+[data-reach-menu-button][aria-expanded="true"] {
+    border-radius: 5px 5px 0 0;
+}
+
+[data-reach-menu-list] {
+    width: getRem(220);
+    border-radius: 0 0 5px 5px;
+    border: 2px solid #ccc;
+    background-color: white;
+    transform: translateY(-2px);
+}
+
+[data-reach-menu-item] {
+    margin-top: getRem(10);
+    margin-bottom: getRem(5);
+    a {
+        padding: getRem(10) getRem(16);
+        font-size: getRem(16);
+        color: black;
+        &:hover {
+            color: #40a9ff;
+        }
+    }
+}

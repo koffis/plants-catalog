@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ShoppingCartOutlined, CloseOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import goods from "../../../assets/images/fertilizers.png";
@@ -7,7 +8,7 @@ import styled from "styled-components";
 import { deleteCartItem, changeItemAmount, addCartItem } from "../../CartPage/actions/cartActions";
 import { InputNumber } from "antd";
 import { receiveGoods } from "../../GoodPage/actions/goodsActions";
-
+import { Alert } from 'antd';
 
 import "./index.scss";
 
@@ -37,12 +38,15 @@ const GoodsItem = ({
   const { header } = useWindow();
   const dispatch = useDispatch();
 
+  const [success, setSuccess] = useState(false);
+
   const handleAmount = (event) => {
     dispatch(changeItemAmount({ code, amount: event }))
   }
 
   return (
     <div className="goods">
+      {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
       <Link to={`/goods?code=${code}`} onClick={() => {
         dispatch(receiveGoods(code));
         window.scrollTo(0, 0);
@@ -77,7 +81,17 @@ const GoodsItem = ({
         <span className="goods-price-new">{price} ГРН</span>
         {discount && <span className="goods-price-old">{discount} ГРН</span>}
         {cart && header && (
-          <GreenButton>Купити</GreenButton>
+          <GreenButton onClick={() => {
+            dispatch(addCartItem({
+              image: image,
+              name,
+              code,
+              price,
+              amount: 1
+            }));
+            setSuccess(true);
+            setTimeout(() => setSuccess(false), 4000);
+          }}>Купити</GreenButton>
         )}
       </span>
     </div >

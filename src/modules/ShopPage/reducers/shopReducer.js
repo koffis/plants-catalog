@@ -8,17 +8,18 @@ import {
 const initialState = {
     shop: [],
     total: 0,
+    filter: '',
     loading: false
 };
 
 const handlers = {
     [GET_SHOP_REQUEST]: (state) => ({ ...state, loading: true }),
-    [GET_SHOP_SUCCESS]: (state, { payload: { shop } }) => ({
+    [GET_SHOP_SUCCESS]: (state, { payload: { shop, filter } }) => ({
         ...state,
         loading: false,
-        total: shop.length,
-        shop,
-
+        total: shop.total,
+        shop: filter === state.filter ? [...state.shop, ...shop.shop] : [...shop.shop],
+        filter: filter,
     }),
     [GET_SHOP_FAILURE]: (state) => ({ ...state, loading: false }),
     DEFAULT: (state) => state,

@@ -9,6 +9,7 @@ import Slider from "../components/Slider";
 import Categories from "./categories";
 import { receiveHome } from "./actions/homeActions";
 import Preloader from "../components/Preloader";
+import CategoriesBlock from "../components/Categories";
 
 import "./index.scss";
 
@@ -28,7 +29,7 @@ const HomePage = () => {
     <div>
       <Header />
       <div className="home">
-        <Categories header={header} />
+        <CategoriesBlock />
         {header ? null : <div className="home-fertilizers">Добрива</div>}
         {header && <Slider />}
         {header && <MainBlock />}

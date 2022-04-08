@@ -7,18 +7,18 @@ import {
 
 const request = () => ({ type: GET_SHOP_REQUEST });
 
-const success = (shop) => ({
+const success = (shop, filter) => ({
     type: GET_SHOP_SUCCESS,
-    payload: { shop },
+    payload: { shop, filter },
 });
 const failure = () => ({ type: GET_SHOP_FAILURE });
 
-export const receiveShop = (code) => async (dispatch) => {
+export const receiveShop = (params) => async (dispatch) => {
     dispatch(request());
     try {
-        const { data: receiveShopData } = await getAllItems(code);
+        const { data: receiveShopData } = await getAllItems(params);
 
-        dispatch(success(receiveShopData));
+        dispatch(success(receiveShopData, params.category));
     } catch (e) {
         console.log(e);
         dispatch(failure());
