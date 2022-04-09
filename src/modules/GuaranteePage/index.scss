@@ -52,4 +52,21 @@
       }
     }
   }
+  &-videos {
+    margin-top: getRem(50);
+    margin-bottom: getRem(50);
+    margin-left: getRem(25);
+    iframe {
+      width: getRem(330);
+    }
+    @include breakpoint(mobile_landscape) {
+      iframe {
+        width: getRem(500);
+      }
+      display: flex;
+      justify-content: space-between;
+      margin-left: getRem(160);
+      margin-right: getRem(160);
+    }
+  }
 }

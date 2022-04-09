@@ -9,6 +9,7 @@ import { useWindow } from "../../utils";
 import { receiveHome } from "../HomePage/actions/homeActions";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
+import {Helmet} from "react-helmet";
 
 import "./index.scss";
 import MainBlock from "../components/MainBlock";
@@ -29,6 +30,10 @@ const GuaranteePage = () => {
 
   return loading ? <Preloader /> : (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Зелений сад - Гарантії</title>
+      </Helmet>
       <Header />
       <div className="guarantee">
         <h4>Гарантії</h4>
@@ -68,6 +73,10 @@ const GuaranteePage = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="guarantee-videos">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/OPjXx_Jzb64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/92G4mw2HYnM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       {header && <MainBlock />}
       {header ? <Footer /> : <FooterMobile />}

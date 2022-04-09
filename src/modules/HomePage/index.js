@@ -10,6 +10,7 @@ import Categories from "./categories";
 import { receiveHome } from "./actions/homeActions";
 import Preloader from "../components/Preloader";
 import CategoriesBlock from "../components/Categories";
+import {Helmet} from "react-helmet";
 
 import "./index.scss";
 
@@ -27,6 +28,10 @@ const HomePage = () => {
 
   return loading ? <Preloader /> : (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Зелений сад - Головна</title>
+      </Helmet>
       <Header />
       <div className="home">
         <CategoriesBlock />

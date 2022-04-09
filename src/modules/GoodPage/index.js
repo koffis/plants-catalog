@@ -28,6 +28,7 @@ import { Alert } from 'antd';
 import { receiveGoods } from "./actions/goodsActions";
 import { receiveHome } from "../HomePage/actions/homeActions";
 import Preloader from '../components/Preloader';
+import {Helmet} from "react-helmet";
 
 import "./index.scss";
 
@@ -73,6 +74,15 @@ const GoodPage = () => {
 
   return loading ? <Preloader /> : (
     <div>
+      <Helmet>
+        <meta charset="utf-8"/>
+        <meta name="nosnippet"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="Keywords" content="Сад, садівництво, розсада, кущі, дерева, квіти"/>
+        <meta property="og:type" content="website"/>
+        <meta name="description"content={description} />
+        <title>Зелений сад - {name}</title>
+      </Helmet>
       <Header />
       {header ? (
         <div className="goodPage-desktop">

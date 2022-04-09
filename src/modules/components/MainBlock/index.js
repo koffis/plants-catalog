@@ -10,14 +10,12 @@ const MainBlock = ({ isGood }) => {
 
   const popular = useSelector(state => state.home.popular);
   const discount = useSelector(state => state.home.discount);
-  const season = useSelector(state => state.home.season);
 
   return (
     <div className="main-block">
       {isGood ? null : (
         <>
           <GoodsList title="Популярні товари" goods={popular} />
-          <GoodsList title="Сезонний вибір" goods={season} />
         </>
       )}
       <div className="main-block-betters">

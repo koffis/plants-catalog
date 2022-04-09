@@ -9,6 +9,7 @@ import { receiveHome } from "../HomePage/actions/homeActions";
 import mother from '../../assets/images/mother.jpg';
 import mother2 from '../../assets/images/mother2.jpg';
 import Preloader from "../components/Preloader";
+import {Helmet} from "react-helmet";
 
 import "./index.scss";
 
@@ -27,6 +28,10 @@ const AboutPage = () => {
 
   return loading ? <Preloader /> : (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Зелений сад - Про нас</title>
+      </Helmet>
       <Header />
       <div className="about">
         <h2 className="about-header">Про магазин</h2>

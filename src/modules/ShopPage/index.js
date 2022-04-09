@@ -8,6 +8,7 @@ import GoodsList from '../components/GoodsList';
 import CategoriesBlock from '../components/Categories';
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
+import {Helmet} from "react-helmet";
 
 import InfiniteScroll from "react-infinite-scroller"
 
@@ -38,6 +39,10 @@ const ShopPage = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Зелений сад - Каталог</title>
+            </Helmet>
             <Header />
             <CategoriesBlock />
             { shop.length !== 0 ? 

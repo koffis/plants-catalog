@@ -7,6 +7,8 @@ import { useWindow } from "../../utils";
 import { Alert } from 'antd';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom";
+import {Helmet} from "react-helmet";
+
 import "./index.scss";
 
 const CartPage = () => {
@@ -56,6 +58,10 @@ const CartPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Зелений сад - Корзина</title>
+      </Helmet>
       {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Замовлення створене! Очікуйте дзвінка." type="success" showIcon />}
       <Header />
       <div className="cart">

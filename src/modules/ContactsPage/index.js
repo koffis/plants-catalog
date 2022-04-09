@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import MainBlock from "../components/MainBlock";
 import { receiveHome } from "../HomePage/actions/homeActions";
 import Preloader from "../components/Preloader";
+import {Helmet} from "react-helmet";
 
 import "./index.scss";
 
@@ -24,6 +25,10 @@ const ContactsPage = () => {
 
   return loading ? <Preloader /> : (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Зелений сад - Контакти</title>
+      </Helmet>
       <Header />
       <div className="contacts">
         <h3>Контакти</h3>
