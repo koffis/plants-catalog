@@ -23,6 +23,13 @@ const GreenButton = styled.button`
   &:hover {
     opacity: 0.7;
   }
+  &:disabled {
+    cursor: auto;
+    opacity: 0.7;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 `;
 
 const GoodsItem = ({
@@ -33,7 +40,8 @@ const GoodsItem = ({
   discount,
   amount,
   cart = true,
-  close = false
+  close = false, 
+  stock_status
 }) => {
   const { header } = useWindow();
   const dispatch = useDispatch();
@@ -45,9 +53,12 @@ const GoodsItem = ({
   }
 
   return (
-    <div className="goods">
+    <div className={`goods ${stock_status === 'outofstock' ? 'goods-disabled' : ' '}`}>
       {header && success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
       {!header && success && <Alert style={{ position: "fixed", top: '50px', left: '15%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
+      {
+        stock_status === 'outofstock' && <div className='goods-outofstock'>Немає в наявності</div>
+      }      
       <Link to={`/goods?code=${code}`} onClick={() => {
         dispatch(receiveGoods(code));
         window.scrollTo(0, 0);
@@ -91,7 +102,7 @@ const GoodsItem = ({
         <span className="goods-price-new">{price} ГРН</span>
         {discount && <span className="goods-price-old">{discount} ГРН</span>}
         {cart && header && (
-          <GreenButton onClick={() => {
+          <GreenButton disabled={stock_status === 'outofstock' ? true : false} onClick={() => {
             dispatch(addCartItem({
               image: image,
               name,

@@ -13,22 +13,22 @@ const initialState = {
     loading: false
 };
 
-const getShop = ({state, shop, filter, search}) => {
+const getShop = ({ state, shop, filter, search, page }) => {
     if (filter) {
-        return filter === state.filter ? [...state.shop, ...shop.shop] : [...shop.shop];
+        return filter === state.filter && page != 1 ? [...state.shop, ...shop.shop] : [...shop.shop];
     } else if (search) {
-        return search === state.search ? [...state.shop, ...shop.shop] : [...shop.shop];
+        return search === state.search && page != 1 ? [...state.shop, ...shop.shop] : [...shop.shop];
     }
     return [...state.shop, ...shop.shop];
 }
 
 const handlers = {
     [GET_SHOP_REQUEST]: (state) => ({ ...state, loading: true }),
-    [GET_SHOP_SUCCESS]: (state, { payload: { shop, filter, search } }) => ({
+    [GET_SHOP_SUCCESS]: (state, { payload: { shop, filter, search, page } }) => ({
         ...state,
         loading: false,
         total: shop.total,
-        shop: getShop({state, shop, filter, search}),
+        shop: getShop({ state, shop, filter, search, page }),
         search: search,
         filter: filter,
     }),

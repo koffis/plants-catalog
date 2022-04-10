@@ -1,3 +1,4 @@
 import http from '../../http';
+import { SERVER_URL } from '../../config';
 
-export const getAllItems = (params) => http.get('http://194.187.154.148:8080/api/v1/shop', {params : { ...params }});
+export const getAllItems = (params) => http.get(`${SERVER_URL}/api/v1/shop`, {params : { ...params }});

@@ -1,3 +1,4 @@
 import http from '../../http';
+import { SERVER_URL } from '../../config';
 
-export const getHomeData = () => http.get('http://194.187.154.148:8080/api/v1/home', {});
+export const getHomeData = () => http.get(`${SERVER_URL}/api/v1/home`, {});

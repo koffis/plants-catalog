@@ -62,6 +62,7 @@
     @include breakpoint(mobile_landscape) {
       iframe {
         width: getRem(500);
+        height: getRem(315);
       }
       display: flex;
       justify-content: space-between;

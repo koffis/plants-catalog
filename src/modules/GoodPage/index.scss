@@ -49,6 +49,13 @@
         &:hover {
           background: #0cd369;
         }
+        &:disabled {
+          cursor: auto;
+          opacity: 0.7;
+          &:hover {
+            background: #078943;
+          }
+        }
       }
       hr {
         margin-bottom: getRem(30);
@@ -152,4 +159,11 @@
   width: 700px;
   height: 450px;
   object-fit: cover;
+}
+
+.outofstock {
+  font-size: getRem(16);
+  margin-bottom: getRem(0);
+  font-weight: 600;
+  color: #ec2640;
 }

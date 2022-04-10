@@ -10,21 +10,12 @@ const initialState = {
     price: 0,
     code: 0,
     description: '',
-    images: [
-        {
-            original: "https://picsum.photos/id/1018/1000/600/",
-            thumbnail: "https://picsum.photos/id/1018/250/150/",
-        },
-        {
-            original: "https://picsum.photos/id/1015/1000/600/",
-            thumbnail: "https://picsum.photos/id/1015/250/150/",
-        },
-        {
-            original: "https://picsum.photos/id/1019/1000/600/",
-            thumbnail: "https://picsum.photos/id/1019/250/150/",
-        },
-    ],
-    loading: false
+    images: [],
+    loading: false,
+    category: '',
+    description_excerpt: '',
+    discount: '',
+    stock_status: 'instock'
 };
 
 const handlers = {

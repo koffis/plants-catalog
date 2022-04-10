@@ -69,7 +69,7 @@ const GoodPage = () => {
     dispatch(receiveHome())
   }, []);
 
-  const { images, name, price, description, loading } = useSelector(state => state.goods);
+  const { images, name, price, description, description_excerpt, loading, stock_status } = useSelector(state => state.goods);
   const popular = useSelector(state => state.home.popular);
 
   return loading ? <Preloader /> : (
@@ -99,11 +99,12 @@ const GoodPage = () => {
               slideOnThumbnailOver={true}
             />
             <div className="goodPage-desktop-main-info">
+              {stock_status === 'outofstock' && <h5 className="outofstock">Немає в наявності</h5> }
               <h4>{price} ГРН</h4>
               <p>Код : {code}</p>
               <span>
                 <InputNumber min={1} value={value} onChange={setValue} />
-                <button onClick={() => {
+                <button disabled={stock_status === 'outofstock' ? true : false} onClick={() => {
                   dispatch(addCartItem({
                     image: images[0].original,
                     name,
@@ -154,7 +155,12 @@ const GoodPage = () => {
           </div>
           <div className="goodPage-desktop-description">
             <h4>Опис товару</h4>
-            <p>{description}</p>
+            <p>
+              {description}
+              <br/>
+              <br/>
+              {description_excerpt}
+            </p>
           </div>
           <MainBlock isGood={true} popular={popular} />
           <Footer />
@@ -167,6 +173,7 @@ const GoodPage = () => {
           </span>
           <h4 className="goodPage-name">{name}</h4>
           <span className="goodPage-info">
+            {stock_status === 'outofstock' && <h5 className="outofstock">Немає в наявності</h5> }
             <span className="goodPage-info-code">Код: {code}</span>
             <span className="goodPage-info-price">{price} ГРН</span>
           </span>
@@ -177,7 +184,7 @@ const GoodPage = () => {
               showPlayButton={false}
               thumbnailPosition="bottom"
             />
-            <GreenButton type="primary" onClick={() => {
+            <GreenButton  disabled={stock_status === 'outofstock' ? true : false} type="primary" onClick={() => {
               dispatch(addCartItem({
                 image: images[0].original,
                 name,
@@ -200,6 +207,9 @@ const GoodPage = () => {
           </h5>
           <p className="goodPage-text">
             {description}
+            <br/>
+            <br/>
+            {description_excerpt}
           </p>
           <hr />
           <h5 className="goodPage-delivery">
@@ -234,17 +244,6 @@ const GoodPage = () => {
             <br /> Ми верифіковані <b>в Google My Business</b>
             <br /> Самовивіз: <b>з нашого складу!</b>
           </p>
-          <hr />
-          <h3 className="goodPage-delivery">Схожі товари</h3>
-          <div className="goodPage-sameGoods">
-            <div className="goodPage-sameGoods-items">
-              <GoodsItem />
-              <GoodsItem />
-            </div>
-            <div className="goodPage-sameGoods-more">
-              Показати ще <DownOutlined />
-            </div>
-          </div>
         </div>
       )}
     </div>

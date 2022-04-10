@@ -10,6 +10,7 @@ const GoodsList = ({ title, goods }) => {
       price={good.price}
       discount={good.discount !== good.price && good.discount}
       cart={good.cart}
+      stock_status={good.stock_status}
     />
   ));
   return (

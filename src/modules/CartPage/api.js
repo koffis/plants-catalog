@@ -1,3 +1,4 @@
 import http from '../../http';
+import { SERVER_URL } from '../../config';
 
-export const buyGoods = (payload) => http.post('http://194.187.154.148:8080/api/v1/offer', { data: payload });
+export const buyGoods = (payload) => http.post(`${SERVER_URL}/api/v1/offer`, { data: payload });

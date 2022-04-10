@@ -8,7 +8,7 @@ import GoodsList from '../components/GoodsList';
 import CategoriesBlock from '../components/Categories';
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import InfiniteScroll from "react-infinite-scroller"
 
@@ -20,7 +20,7 @@ const ShopPage = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(2);
 
-    const {shop, total, loading} = useSelector(state => state.shop);
+    const { shop, total } = useSelector(state => state.shop);
 
     const urlParams = new URLSearchParams(window.location.search);
     const filter = urlParams.get('filter');
@@ -28,12 +28,13 @@ const ShopPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        dispatch(receiveShop({page: 1, category: filter, search}));
+        dispatch(receiveShop({ page: 1, category: filter, search }));
+        setPage(2);
     }, [filter, search]);
 
 
     const getNextPage = () => {
-        dispatch(receiveShop({page: page, category: filter, search}));
+        dispatch(receiveShop({ page: page, category: filter, search }));
         setPage(page + 1);
     };
 
@@ -45,17 +46,14 @@ const ShopPage = () => {
             </Helmet>
             <Header />
             <CategoriesBlock />
-            { shop.length !== 0 ? 
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={getNextPage}
-                    hasMore={!loading && shop.length < total}
-                    loader={<div className="loader" key={0}>Loading ...</div>}
-                >
-                    <div>
-                        <GoodsList title={'Каталог'} goods={shop} />
+            {shop.length !== 0
+
+                ? (<div>
+                    <GoodsList title={'Каталог'} goods={shop} />
+                    <div className='show-more'>
+                        {shop.length < total && <button onClick={getNextPage}>Показати ще</button>}
                     </div>
-                </InfiniteScroll>
+                </div>)
                 : <div className="no-data">Товарів не знайдено.</div>
             }
             {header ? <Footer /> : <FooterMobile />}
