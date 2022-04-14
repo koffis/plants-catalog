@@ -34,8 +34,8 @@ const ContactsPage = () => {
         <h3>Контакти</h3>
         <p className="contacts-schedule">Графік роботи:</p>
         <p className="contacts-work">Пн - Сб 8:00 - 19:00</p>
-        <p className="contacts-weekend">Нд - вихідний</p>
-        <p className="contacts-number">+38 (097) 49 331 67</p>
+        <p className="contacts-weekend">Нд - 9:00 - 17:00</p>
+        <p className="contacts-number"><a href="tel:+380974933167">+38 (097) 493 31 67</a></p>
         <p className="contacts-address">м.Тернопіль вул. Анатолія Живова, 9В</p>
       </div>
       {header && <MainBlock />}

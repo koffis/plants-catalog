@@ -86,9 +86,7 @@
 }
 
 .goods-disabled {
-  img {
-    opacity: .5;
-  }
+  background-color: rgba(163, 163, 163, 0.534);
 }
 
 .goods-outofstock {
@@ -100,5 +98,4 @@
   background-color: white;
   margin-right: getRem(100);
   padding: getRem(1) getRem(5);
-  z-index: 2;
 }

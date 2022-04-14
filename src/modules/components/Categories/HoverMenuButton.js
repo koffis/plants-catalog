@@ -53,6 +53,7 @@ import { Link, useHistory } from "react-router-dom";
         <span>{title}</span>
       </MenuButton>
       <MenuList
+      className="menu-list-categories"
         onMouseEnter={event => {
           setIsOverList(true);
         }}

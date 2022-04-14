@@ -7,7 +7,7 @@ import './index.scss';
 const CategoriesBlock = () => {
 
     const colonovydny = [
-        {name: 'Всі', category: 'Колоновидні'}, 
+        {name: 'Всі', category: 'Колоновидні | Колоновидні'}, 
         {name: 'Абрикос', category: "Колоновидні | Абрикос"}, 
         {name: 'Вишні', category: "Колоновидні | Вишні"}, 
         {name: 'Груші', category: "Груші | Колоновидні"}, 
@@ -18,7 +18,7 @@ const CategoriesBlock = () => {
     ];
 
     const kuschi = [
-        {name: 'Всі', category: 'Кущі'}, 
+        {name: 'Всі', category: 'Кущі | Кущі'}, 
         {name: 'Агрус', category: 'Кущі | Агрус'},
         {name: 'Виноград', category: 'Кущі | Виноград'},
         {name: 'Горобина', category: 'Кущі | Горобина'},
@@ -37,7 +37,7 @@ const CategoriesBlock = () => {
     ];
 
     const yagidni = [
-        {name: 'Всі', category: 'Плодово-ягідні'}, 
+        {name: 'Всі', category: 'Плодово-ягідні | Плодово-ягідні'}, 
         {name: 'Абрикос', category: 'Плодово-ягідні | Абрикос'}, 
         {name: 'Вишня', category: 'Плодово-ягідні | Вишня'},
         {name: 'Горіхи', category: 'Плодово-ягідні | Горіхи'},
@@ -52,7 +52,7 @@ const CategoriesBlock = () => {
     ];
 
     const troyandy = [
-        {name: 'Всі', category: 'Троянди'}, 
+        {name: 'Всі', category: 'Троянди | Троянди'}, 
         {name: 'Англійські троянди', category: 'Троянди | Англійські троянди'},
         {name: 'Бордюрні', category: 'Троянди | Бордюрні'},
         {name: 'Грунтопокривні', category: 'Троянди | Грунтопокривні'},
@@ -65,8 +65,8 @@ const CategoriesBlock = () => {
 
     return ( 
         <div className='categories-block'>
-            <Link to='shop?filter=Декоративні'>Декоративні</Link>
-            <Link to='shop?filter=Новинки'>Новинки</Link>
+            <Link to='shop?filter=Декоративні | Декоративні'>Декоративні</Link>
+            <Link to='shop?filter=Новинки! | Новинки!'>Новинки</Link>
             <CategoryDropdown title='Колоновидні' menuItems={colonovydny}/>
             <CategoryDropdown title='Кущі' menuItems={kuschi}/>
             <CategoryDropdown title='Плодово-ягідні' menuItems={yagidni}/>

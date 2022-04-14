@@ -5,7 +5,7 @@
  * @default
  */
 
-export const SERVER_URL = "http://194.187.154.148:8080";
+export const SERVER_URL = "https://api.greengarden.org.ua";
 
 export const ROUTES = {
   root: "/",

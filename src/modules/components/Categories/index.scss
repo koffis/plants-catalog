@@ -1,5 +1,13 @@
 @import '../../../index.scss';
 
+.menu-list-categories {
+    z-index: 3;
+}
+
+[data-reach-menu-list] {
+    z-index: 3;
+}
+
 .categories-block {
     margin-top: getRem(100);
     display: flex;

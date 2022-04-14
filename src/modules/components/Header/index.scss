@@ -63,8 +63,11 @@
       padding: getRem(17) getRem(20);
       background-color: #078943;
       &-phone {
-        font-size: getRem(16);
-        margin-left: getRem(15);
+        a {
+          font-size: getRem(16);
+          color: white;
+          margin-left: getRem(15);
+        }
       }
     }
     &-main {

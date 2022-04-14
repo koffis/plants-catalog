@@ -66,7 +66,7 @@ const Header = () => {
         <div className="header-menu-info">
           <span>
             <PhoneFilled style={{ fontSize: 20 }} />
-            <span className="header-menu-info-phone">(097) 49 331 67</span>
+            <span className="header-menu-info-phone"><a href="tel:+380974933167">(097) 493 31 67</a></span>
           </span>
           <CloseOutlined
             style={{ fontSize: 25 }}
