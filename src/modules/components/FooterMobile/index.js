@@ -17,7 +17,7 @@ const FooterMobile = () => {
           <GoodsList title="Популярні товари" goods={popular} />
         </div>
       </div>
-      <Link to={`/shop?filter=Новинки`}><div className="home-newsorts">Нові сорти</div></Link>
+      <Link to={`shop?filter=Новинки! | Новинки!`}><div className="home-newsorts">Нові сорти</div></Link>
       <div className="home-popular-goods">
         <div className="home-popular-goods-items">
           <GoodsList title="Акції" goods={discount} />

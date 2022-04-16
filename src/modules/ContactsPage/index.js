@@ -37,6 +37,7 @@ const ContactsPage = () => {
         <p className="contacts-weekend">Нд - 9:00 - 17:00</p>
         <p className="contacts-number"><a href="tel:+380974933167">+38 (097) 493 31 67</a></p>
         <p className="contacts-address">м.Тернопіль вул. Анатолія Живова, 9В</p>
+        <p className="contacts-address">green.garden.ternopil@gmail.com</p>
       </div>
       {header && <MainBlock />}
       {header ? <Footer /> : <FooterMobile />}
