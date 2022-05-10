@@ -68,10 +68,6 @@ const Delivery = ({ cart, price, setSuccess }) => {
                 Переказ на карту
               </label>
               <label>
-                <Field type="radio" name="payment" value="Накладний платіж" />
-                При отриманні замовлення (Накладний платіж)
-              </label>
-              <label>
                 <Field
                   type="radio"
                   name="payment"
@@ -92,7 +88,8 @@ const Delivery = ({ cart, price, setSuccess }) => {
               ви погоджуєтесь з
               <b> користувацьким договором</b>
             </p>
-            <button disabled={cart.length != 0 ? false : true} className="cart-delivery-button" type="submit">Оформити замовлення</button>
+            <button disabled={price > 499 ? false : true} className="cart-delivery-button" type="submit">Оформити замовлення</button>
+            {price < 500 && <h5 style={{color: "red"}}>МІНІМАЛЬНА СУМА ЗАМОВЛЕННЯ 500 ГРН</h5>}
           </Form>
         )}
       </Formik>

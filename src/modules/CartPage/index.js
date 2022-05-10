@@ -71,6 +71,7 @@ const CartPage = () => {
           {cartList}
         </div>
         <h4 className="cart-sum"><b>Загальна сума:</b> {price} ГРН</h4>
+        {price < 500 && <h5 style={{color: "red"}}>МІНІМАЛЬНА СУМА ЗАМОВЛЕННЯ 500 ГРН</h5>}
         <h5>Оформлення замовлення:</h5>
         <Delivery cart={listOfGoods} price={price} setSuccess={setSuccess} />
       </div>

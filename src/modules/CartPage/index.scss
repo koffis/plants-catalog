@@ -77,6 +77,10 @@
       font-size: getRem(20);
       margin-top: getRem(30);
       margin-bottom: getRem(45);
+      &:disabled {
+        cursor: auto;
+        background-color: gray;
+      }
     }
     @include breakpoint(mobile_landscape) {
       form {
