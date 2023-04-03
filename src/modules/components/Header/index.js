@@ -8,6 +8,7 @@ import {
   ShoppingCartOutlined,
   AppstoreOutlined,
   MenuOutlined,
+  FacebookOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
 import styled from "styled-components";
@@ -50,13 +51,27 @@ const Header = () => {
           <Link to="/about">Про магазин</Link>
         </span>
         <span className="header-desktop-menu-right">
-        <SearchCustom placeholder="Пошук..." onSearch={onSearch} enterButton />
-        <Link style={{ display: "flex" }} to="/cart">
-          <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
-          {count.length !== 0 && <div className="header-desktop-menu-right-count">
-            {count.length}
-          </div>}
-        </Link>
+          <SearchCustom
+            placeholder="Пошук..."
+            onSearch={onSearch}
+            enterButton
+          />
+          <Link style={{ display: "flex" }} to="/cart">
+            <ShoppingCartOutlined style={{ fontSize: 35, color: "white" }} />
+            {count.length !== 0 && (
+              <div className="header-desktop-menu-right-count">
+                {count.length}
+              </div>
+            )}
+          </Link>
+          <a
+            className="footer-other-block-icon"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/green.garden.ternopil/"
+          >
+            <FacebookOutlined style={{ fontSize: 40, color: "white" }} />
+          </a>
         </span>
       </div>
     </div>
@@ -66,7 +81,9 @@ const Header = () => {
         <div className="header-menu-info">
           <span>
             <PhoneFilled style={{ fontSize: 20 }} />
-            <span className="header-menu-info-phone"><a href="tel:+380974933167">(097) 493 31 67</a></span>
+            <span className="header-menu-info-phone">
+              <a href="tel:+380974933167">(097) 493 31 67</a>
+            </span>
           </span>
           <CloseOutlined
             style={{ fontSize: 25 }}
@@ -76,13 +93,13 @@ const Header = () => {
           />
         </div>
         <div className="header-menu-main">
-        <Link to="/shop">
-          <div className="header-menu-main-item">
-            <div className="header-menu-main-item-icon">
-              <AppstoreOutlined style={{ fontSize: 25 }} />
-            </div>
+          <Link to="/shop">
+            <div className="header-menu-main-item">
+              <div className="header-menu-main-item-icon">
+                <AppstoreOutlined style={{ fontSize: 25 }} />
+              </div>
               <span>Каталог товарів</span>
-          </div>
+            </div>
           </Link>
           <Link to="/cart" className="header-menu-main-item">
             <div className="header-menu-main-item-icon">
@@ -104,6 +121,13 @@ const Header = () => {
           <Link to="/contacts">
             <p>Контакти</p>
           </Link>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/green.garden.ternopil/"
+          >
+            <p>Facebook</p>
+          </a>
         </div>
       </div>
     </div>
@@ -122,9 +146,11 @@ const Header = () => {
         enterButton
       />
       <Link to="/cart">
-        {count.length !== 0 ? <div className="header-desktop-menu-right-count">
-          {count.length}
-        </div> : <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />}
+        {count.length !== 0 ? (
+          <div className="header-desktop-menu-right-count">{count.length}</div>
+        ) : (
+          <ShoppingCartOutlined style={{ fontSize: 30, color: "white" }} />
+        )}
       </Link>
     </div>
   );

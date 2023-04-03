@@ -46,7 +46,7 @@ const Footer = () => {
           <a
             className="footer-other-block-icon"
             target="_blank" rel="noopener noreferrer"
-            href="https://www.facebook.com/SagSimyBoyko/"
+            href="https://www.facebook.com/green.garden.ternopil/"
           >
             <FacebookOutlined />
           </a>
