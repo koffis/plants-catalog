@@ -102,9 +102,15 @@ const GoodPage = () => {
     description_excerpt,
     loading,
     stock_status,
+    attributes,
   } = useSelector((state) => state.goods);
   const popular = useSelector((state) => state.home.popular);
-
+  function stripHtml(html)
+  {
+     let tmp = document.createElement("DIV");
+     tmp.innerHTML = html;
+     return tmp.textContent || tmp.innerText || "";
+  }
   return loading ? (
     <Preloader />
   ) : (
@@ -222,11 +228,22 @@ const GoodPage = () => {
           <div className="goodPage-desktop-description">
             <h4>Опис товару</h4>
             <p>
-              {description}
+              {stripHtml(description)}
               <br />
               <br />
-              {description_excerpt}
+              {stripHtml(description_excerpt)}
             </p>
+            {attributes.length > 0 && (
+              <>
+                <h4>Характеристики товару</h4>
+                {attributes.map((el) => (
+                  <p>
+                    <b>{el.AttrName.charAt(0).toUpperCase() + el.AttrName.slice(1)}: </b>
+                    <span>{el.AttrValue}</span>
+                  </p>
+                ))}
+              </>
+            )}
           </div>
           <MainBlock isGood={true} popular={popular} />
           <Footer />
@@ -302,11 +319,28 @@ const GoodPage = () => {
             Опис товару
           </h5>
           <p className="goodPage-text">
-            {description}
+            {stripHtml(description)}
             <br />
             <br />
-            {description_excerpt}
+            {stripHtml(description_excerpt)}
           </p>
+          <hr />
+          {attributes.length > 0 && (
+            <>
+              <h5 className="goodPage-description">
+                <ShoppingOutlined className="goodPage-description-icon" />
+                Характеристики товару
+              </h5>
+              <p className="goodPage-text">
+                {attributes.map((el) => (
+                  <p>
+                    <b>{el.AttrName}: </b>
+                    <span>{el.AttrValue}</span>
+                  </p>
+                ))}
+              </p>
+            </>
+          )}
           <hr />
           <h5 className="goodPage-delivery">
             <CarOutlined className="goodPage-delivery-icon" />

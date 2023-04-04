@@ -15,6 +15,7 @@ const initialState = {
     category: '',
     description_excerpt: '',
     discount: '',
+    attributes: [],
     stock_status: 'instock'
 };
 
