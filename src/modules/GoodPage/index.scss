@@ -7,12 +7,14 @@
       margin-left: getRem(147);
       margin-bottom: 31;
     }
+
     p {
       margin-left: getRem(147);
       margin-right: getRem(539);
       font-size: getRem(18);
     }
   }
+
   h3 {
     font-size: getRem(48);
     font-weight: 600;
@@ -20,23 +22,29 @@
     margin-top: getRem(138);
     margin-bottom: 0;
   }
+
   &-main {
     display: flex;
     margin: getRem(60) getRem(147);
+
     &-info {
       &-item {
         display: flex;
+
         &-image {
           display: flex;
           justify-content: center;
           align-items: center;
           width: getRem(107);
         }
+
         p {
           width: getRem(264);
         }
       }
+
       margin-left: getRem(30);
+
       button {
         cursor: pointer;
         background: #078943;
@@ -46,20 +54,25 @@
         border: 0;
         padding: getRem(10) getRem(53);
         margin-bottom: getRem(30);
+
         &:hover {
           background: #0cd369;
         }
+
         &:disabled {
           cursor: auto;
           opacity: 0.7;
+
           &:hover {
             background: #078943;
           }
         }
       }
+
       hr {
         margin-bottom: getRem(30);
       }
+
       h4 {
         font-size: getRem(48);
         font-weight: 600;
@@ -70,74 +83,176 @@
 }
 
 .goodPage {
+
+  &-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.464);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-block {
+      width: 80%;
+      height: 60%;
+      background-color: white;
+      opacity: 1 !important;
+      padding: getRem(25) getRem(15) getRem(15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        cursor: pointer;
+        background: #078943;
+        color: white;
+        font-size: getRem(18);
+        border: 0;
+        padding: getRem(10) getRem(53);
+        margin-top: getRem(30);
+        margin-bottom: getRem(30);
+
+        &:hover {
+          background: #0cd369;
+        }
+
+        &:disabled {
+          cursor: auto;
+          opacity: 0.7;
+
+          &:hover {
+            background: #078943;
+          }
+        }
+      }
+
+      h3 {
+        margin-bottom: getRem(30);
+      }
+
+      input {
+        width: 80%;
+        margin-bottom: getRem(15);
+        border: solid getRem(1) black;
+      }
+
+      &-close {
+        font-size: getRem(25);
+        position: absolute;
+        margin-right: -15rem;
+        margin-top: -1rem;
+      }
+
+      @include breakpoint(mobile_landscape) {
+        width: 50%;
+        height: 50%;
+
+        &-close {
+          font-size: getRem(25);
+          position: absolute;
+          margin-right: -35rem;
+          margin-top: -1rem;
+        }
+
+        h3 {
+          font-size: getRem(14);
+          margin-top: getRem(20);
+          margin-bottom: getRem(30);
+        }
+
+        input {
+          height: getRem(30);
+          font-size: getRem(13);
+        }
+      }
+    }
+  }
+
   hr {
     background: rgb(196, 196, 196);
     opacity: 0.7;
   }
+
   &-back {
     font-size: getRem(16);
     margin-left: getRem(20);
   }
+
   &-name {
     margin-top: getRem(14);
     margin-left: getRem(20);
     font-size: getRem(20);
   }
+
   &-info {
     display: flex;
     justify-content: space-between;
     margin: getRem(0) getRem(20);
+
     &-code {
       font-weight: 100;
       font-size: getRem(14);
     }
+
     &-price {
       font-size: getRem(18);
       color: rgb(60, 152, 6);
       font-weight: bold;
     }
   }
+
   &-goods {
     margin: getRem(15) getRem(20);
     display: flex;
     flex-direction: column;
+
     &-cart {
       background: #ce1c34;
       color: white;
       font-size: getRem(18);
     }
   }
+
   &-description {
     font-weight: 500;
     font-size: getRem(20);
     margin-left: getRem(20);
+
     &-icon {
       margin-right: getRem(6);
     }
   }
+
   &-text {
     margin-left: getRem(20);
     margin-right: getRem(20);
     font-size: getRem(14);
     margin-bottom: getRem(30);
   }
+
   &-delivery {
     margin-left: getRem(20);
     font-weight: 500;
     font-size: getRem(20);
+
     &-icon {
       margin-right: getRem(6);
     }
+
     &-description {
       margin-left: getRem(20);
       margin-bottom: getRem(30);
       margin-right: getRem(30);
     }
   }
+
   &-sameGoods {
     &-items {
       display: flex;
     }
+
     &-more {
       margin-top: getRem(20);
       margin-left: getRem(130);
@@ -155,7 +270,8 @@
   }
 }
 
-.image-gallery-content.left .image-gallery-slide .image-gallery-image, .image-gallery-content.right .image-gallery-slide .image-gallery-image {
+.image-gallery-content.left .image-gallery-slide .image-gallery-image,
+.image-gallery-content.right .image-gallery-slide .image-gallery-image {
   width: 700px;
   height: 450px;
   object-fit: cover;

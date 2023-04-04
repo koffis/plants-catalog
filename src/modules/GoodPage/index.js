@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   CreditCardOutlined,
   SafetyCertificateOutlined,
   DownOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { InputNumber, Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -24,13 +25,14 @@ import car from "../../assets/images/car.svg";
 import safe from "../../assets/images/safe.svg";
 import credit from "../../assets/images/credit.svg";
 import { addCartItem } from "../CartPage/actions/cartActions";
-import { Alert } from 'antd';
+import { Alert } from "antd";
 import { receiveGoods } from "./actions/goodsActions";
 import { receiveHome } from "../HomePage/actions/homeActions";
-import Preloader from '../components/Preloader';
-import {Helmet} from "react-helmet";
+import Preloader from "../components/Preloader";
+import { Helmet } from "react-helmet";
 
 import "./index.scss";
+import { makeOrder } from "./api";
 
 const RedButton = styled(Button)`
   background: #ce1c34;
@@ -55,42 +57,90 @@ const GoodPage = () => {
   const dispatch = useDispatch();
   const { header } = useWindow();
   const [value, setValue] = useState(1);
+  const [modalVindow, setModalVindow] = useState(false);
+  const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  // const { state } = useLocation();
 
-  // const code = state.code;
+  const fullname = useRef();
+  const number = useRef();
+  const email = useRef();
 
   const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
+  const code = urlParams.get("code");
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(receiveGoods(code));
-    dispatch(receiveHome())
+    dispatch(receiveHome());
   }, []);
 
-  const { images, name, price, description, description_excerpt, loading, stock_status } = useSelector(state => state.goods);
-  const popular = useSelector(state => state.home.popular);
+  const order = () => {
+    if (
+      number.current.value == "" ||
+      fullname.current.value == "" ||
+      email.current.value == ""
+    ) {
+      setError(true);
+    } else {
+      makeOrder({
+        name: fullname.current.value,
+        number: number.current.value,
+        email: email.current.value,
+        line_items: [{ product_id: code, quantity: 1 }],
+      }).then((res) => {
+        setModalVindow(false);
+        setSuccess(true);
+      });
+    }
+  };
 
-  return loading ? <Preloader /> : (
+  const {
+    images,
+    name,
+    price,
+    description,
+    description_excerpt,
+    loading,
+    stock_status,
+  } = useSelector((state) => state.goods);
+  const popular = useSelector((state) => state.home.popular);
+
+  return loading ? (
+    <Preloader />
+  ) : (
     <div>
       <Helmet>
-        <meta charset="utf-8"/>
-        <meta name="nosnippet"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="Keywords" content="Сад, садівництво, розсада, кущі, дерева, квіти"/>
-        <meta property="og:type" content="website"/>
-        <meta name="description"content={description} />
+        <meta charset="utf-8" />
+        <meta name="nosnippet" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="Keywords"
+          content="Сад, садівництво, розсада, кущі, дерева, квіти"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="description" content={description} />
         <title>Зелений сад - {name}</title>
       </Helmet>
       <Header />
       {header ? (
         <div className="goodPage-desktop">
-          {success && <Alert style={{ position: "fixed", top: '50px', left: '30%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
+          {success && (
+            <Alert
+              style={{ position: "fixed", top: "50px", left: "30%" }}
+              className="alert"
+              message={
+                stock_status !== "outofstock"
+                  ? "Товар успішно додано до кошику!"
+                  : "Ваше замовлення прийняте!"
+              }
+              type="success"
+              showIcon
+            />
+          )}
           <h3>{name}</h3>
           <div className="goodPage-desktop-main">
             <ImageGallery
-              className='goodPage-desktop-main-gallery'
+              className="goodPage-desktop-main-gallery"
               items={images}
               showFullscreenButton={false}
               showPlayButton={false}
@@ -99,22 +149,38 @@ const GoodPage = () => {
               slideOnThumbnailOver={true}
             />
             <div className="goodPage-desktop-main-info">
-              {stock_status === 'outofstock' && <h5 className="outofstock">Немає в наявності</h5> }
+              {stock_status === "outofstock" && (
+                <h5 className="outofstock">Немає в наявності</h5>
+              )}
               <h4>{price} ГРН</h4>
               <p>Код : {code}</p>
               <span>
                 <InputNumber min={1} value={value} onChange={setValue} />
-                <button disabled={stock_status === 'outofstock' ? true : false} onClick={() => {
-                  dispatch(addCartItem({
-                    image: images[0].original,
-                    name,
-                    code,
-                    price,
-                    amount: value
-                  }));
-                  setSuccess(true);
-                  setTimeout(() => setSuccess(false), 4000);
-                }}>Купити</button>
+                {stock_status !== "outofstock" && (
+                  <button
+                    disabled={stock_status === "outofstock" ? true : false}
+                    onClick={() => {
+                      dispatch(
+                        addCartItem({
+                          image: images[0].original,
+                          name,
+                          code,
+                          price,
+                          amount: value,
+                        })
+                      );
+                      setSuccess(true);
+                      setTimeout(() => setSuccess(false), 4000);
+                    }}
+                  >
+                    Купити
+                  </button>
+                )}
+                {stock_status === "outofstock" && (
+                  <button onClick={() => setModalVindow(true)}>
+                    Товар на замовлення
+                  </button>
+                )}
                 <hr />
               </span>
               <div className="goodPage-desktop-main-info-item">
@@ -157,8 +223,8 @@ const GoodPage = () => {
             <h4>Опис товару</h4>
             <p>
               {description}
-              <br/>
-              <br/>
+              <br />
+              <br />
               {description_excerpt}
             </p>
           </div>
@@ -167,13 +233,27 @@ const GoodPage = () => {
         </div>
       ) : (
         <div className="goodPage">
-          {success && <Alert style={{ position: "fixed", top: '50px', left: '15%' }} className="alert" message="Товар успішно додано до кошику!" type="success" showIcon />}
+          {success && (
+            <Alert
+              style={{ position: "fixed", top: "50px", left: "15%" }}
+              className="alert"
+              message={
+                stock_status !== "outofstock"
+                  ? "Товар успішно додано до кошику!"
+                  : "Ваше замовлення прийняте!"
+              }
+              type="success"
+              showIcon
+            />
+          )}
           <span onClick={history.goBack} className="goodPage-back">
             <LeftOutlined /> Назад
           </span>
           <h4 className="goodPage-name">{name}</h4>
           <span className="goodPage-info">
-            {stock_status === 'outofstock' && <h5 className="outofstock">Немає в наявності</h5> }
+            {stock_status === "outofstock" && (
+              <h5 className="outofstock">Немає в наявності</h5>
+            )}
             <span className="goodPage-info-code">Код: {code}</span>
             <span className="goodPage-info-price">{price} ГРН</span>
           </span>
@@ -184,21 +264,37 @@ const GoodPage = () => {
               showPlayButton={false}
               thumbnailPosition="bottom"
             />
-            <GreenButton  disabled={stock_status === 'outofstock' ? true : false} type="primary" onClick={() => {
-              dispatch(addCartItem({
-                image: images[0].original,
-                name,
-                code,
-                price,
-                amount: value
-              }));
-              setSuccess(true);
-              setTimeout(() => setSuccess(false), 4000);
-            }}>
-              <ShoppingCartOutlined
-              /> Додати в корзину
-            </GreenButton>
-            {/* <GreenButton type="primary">Купити зараз</GreenButton> */}
+            {stock_status !== "outofstock" && (
+              <GreenButton
+                disabled={stock_status === "outofstock" ? true : false}
+                type="primary"
+                onClick={() => {
+                  dispatch(
+                    addCartItem({
+                      image: images[0].original,
+                      name,
+                      code,
+                      price,
+                      amount: value,
+                    })
+                  );
+                  setSuccess(true);
+                  setTimeout(() => setSuccess(false), 4000);
+                }}
+              >
+                <ShoppingCartOutlined /> Додати в корзину
+              </GreenButton>
+            )}
+            {stock_status === "outofstock" && (
+              <GreenButton
+                type="primary"
+                onClick={() => {
+                  setModalVindow(true);
+                }}
+              >
+                <ShoppingCartOutlined /> Товар на замовлення
+              </GreenButton>
+            )}
           </div>
           <hr />
           <h5 className="goodPage-description">
@@ -207,8 +303,8 @@ const GoodPage = () => {
           </h5>
           <p className="goodPage-text">
             {description}
-            <br/>
-            <br/>
+            <br />
+            <br />
             {description_excerpt}
           </p>
           <hr />
@@ -244,6 +340,37 @@ const GoodPage = () => {
             <br /> Ми верифіковані <b>в Google My Business</b>
             <br /> Самовивіз: <b>з нашого складу!</b>
           </p>
+        </div>
+      )}
+      {modalVindow && (
+        <div className="goodPage-modal">
+          <div className="goodPage-modal-block">
+            <CloseOutlined
+              className="goodPage-modal-block-close"
+              onClick={() => {
+                setModalVindow(false);
+              }}
+            />
+            <h3>
+              Ви хочете оформити замовлення на {name}. Залиште ваші контактні
+              дані, будь ласка.
+            </h3>
+            <input
+              type="text"
+              placeholder="Введіть ваше ім'я*"
+              ref={fullname}
+            />
+            <input
+              type="text"
+              placeholder="Введіть ваш номер телефону*"
+              ref={number}
+            />
+            <input type="email" placeholder="Введіть ваш email*" ref={email} />
+            <button onClick={() => order()}>Замовити</button>
+            {error && (
+              <h4 style={{ color: "red" }}>Заповніть всі поля, будь ласка</h4>
+            )}
+          </div>
         </div>
       )}
     </div>
